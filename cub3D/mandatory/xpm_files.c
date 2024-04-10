@@ -6,17 +6,11 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 14:31:30 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/09 14:33:17 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/10 16:38:04 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-void	finish_error(char *str, int i)
-{
-	ft_putstr_fd(str, i);
-	exit (i);
-}
 
 void	get_imgs_xpm(t_data *d)
 {

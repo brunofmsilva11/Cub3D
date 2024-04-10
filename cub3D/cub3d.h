@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:47:06 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/09 16:46:38 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/10 16:38:43 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 
 # include "libft/libft.h"
 # include "minilibx-linux/mlx.h"
+# include "minilibx-linux/mlx_int.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <X11/X.h>
 # include <fcntl.h>
 # include <unistd.h>
 # include <math.h>
+# include <signal.h>
 # define HEIGHT 1080
 # define WIDTH 1920
 # define WALL 0xffffff
@@ -118,36 +120,76 @@ typedef struct s_data
 	double	text_pos;
 }	t_data;
 
-//****************error.c*******************
-void	file_name_error(t_data *d);
-void	error_handling(char *line, t_data *d, char *str);
+/**************************************************************************************************************/
 
-//****************file.c********************
-void	args_in_file(t_data *d, char *file_name);
-int	    valid_info2(t_data *d, char *line);
-void	error_in_elem(t_data *d, char *line);
-void	error_dup_elem(t_data *d, char *line);
 
-//***************init.c*********************
+/* - - - - - -[INIT] - - - - - -*/
+
+//init.c
 void	ft_init_stack(t_data *d);
 void	ft_init_stack1(t_data *d);
 void	ft_init_stack2(t_data *d);
 void	ft_init_stack3(t_data *d);
 void	ft_init_stack4(t_data *d);
 
-//***************init2.c********************
+//init2.c
 void	init_struct_imgs(t_data *d);
 int     check_access(t_data *d);
 
-//***************xpm_files.c********************
-void	put_rgb(t_data *d, char *line, int flag);
 
-//****************xpm.c*********************
+/**************************************************************************************************************/
+
+
+/* - - - - - -[MAP_FILE] - - - - - -*/
+
+//check_file.c
+void	args_in_file(t_data *d, char *file_name);
+void	ft_check_map_file(t_data *d, char *file_name);
+
+//direc_color.c
+int		valid_info(t_data *d, char *line);
+int		valid_info1(t_data *d, char *line);
+int		valid_info2(t_data *d, char *line);
+void	path_image(t_data *d, char *line, int flag);
+
+//rgb_check.c
+void	put_rgb(t_data *d, char *line, int flag);
+int		ft_check_next_comma(char *line);
+int		ft_verify_digits(char *str, int position);
+void	put_fc_rgb(t_data *d, int flag, char *line);
+int		check_for_spaces(char *str);
+
+
+/**************************************************************************************************************/
+/* - - - - - -[error.c] - - - - - -*/
 void	finish_error(char *str, int i);
+void	file_name_error(t_data *d);
+void	error_handling(char *line, t_data *d, char *str);
+
+/* - - - - - -[file.c] - - - - - -*/
+/* void	args_in_file(t_data *d, char *file_name);
+int		valid_info(t_data *d, char *line);
+int		valid_info1(t_data *d, char *line);
+int	    valid_info2(t_data *d, char *line); */
+void	error_in_elem(t_data *d, char *line);
+void	error_dup_elem(t_data *d, char *line);
+
+/* - - - - - -[rgb_check.c] - - - - - -*/
+void	put_rgb(t_data *d, char *line, int flag);
+int		ft_check_next_comma(char *line);
+int		ft_verify_digits(char *str, int position);
+void	put_fc_rgb(t_data *d, int flag, char *line);
+int		check_for_spaces(char *str);
+
+/* - - - - - -[utils.c] - - - - - -*/
+int		string_comp(char *s1, char *s2);
+int		ft_count(char *str, char c);
+
+/* - - - - - -[xpm_files.c] - - - - - -*/
 void	get_imgs_xpm(t_data *d);
 void	get_imgs_addr(t_data *d);
 
-//***************main.c*********************
+/* - - - - - -[main.c] - - - - - -*/
 int		main(int ac, char **av);
 
 #endif

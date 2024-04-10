@@ -6,11 +6,17 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:54:37 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/09 17:05:52 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/10 16:38:10 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+void	finish_error(char *str, int i)
+{
+	ft_putstr_fd(str, i);
+	exit (i);
+}
 
 void	file_name_error(t_data *d)
 {
