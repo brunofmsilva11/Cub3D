@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:04:01 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/10 16:09:05 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/11 12:09:40 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	put_rgb(t_data *d, char *line, int flag)
 		put_fc_rgb(d, flag, line);
 	else if (flag == 2)
 		put_fc_rgb(d, flag, line);
-	ft_free_str(d->map_utils->color_aux);
+	ft_free_str_array(&d->map_utils->color_aux);
 }
 
 int	ft_check_next_comma(char *line)

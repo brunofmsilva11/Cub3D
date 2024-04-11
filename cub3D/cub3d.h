@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:47:06 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/10 16:38:43 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/11 15:21:04 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include <math.h>
 # include <signal.h>
 # define HEIGHT 1080
-# define WIDTH 1920
+# define WIDTH 850
 # define WALL 0xffffff
 # define FLOOR 0x000000
 # define GRID 0x838589
@@ -151,6 +151,8 @@ int		valid_info(t_data *d, char *line);
 int		valid_info1(t_data *d, char *line);
 int		valid_info2(t_data *d, char *line);
 void	path_image(t_data *d, char *line, int flag);
+void	error_in_elem(t_data *d, char *line);
+void	error_dup_elem(t_data *d, char *line);
 
 //rgb_check.c
 void	put_rgb(t_data *d, char *line, int flag);
@@ -166,13 +168,22 @@ void	finish_error(char *str, int i);
 void	file_name_error(t_data *d);
 void	error_handling(char *line, t_data *d, char *str);
 
+/* - - - - - -[exit_command.c] - - - - - -*/
+int    ft_exit_x(t_data *d);
+int		handle_input(int keysym, t_data *d);
+
 /* - - - - - -[file.c] - - - - - -*/
 /* void	args_in_file(t_data *d, char *file_name);
 int		valid_info(t_data *d, char *line);
 int		valid_info1(t_data *d, char *line);
 int	    valid_info2(t_data *d, char *line); */
-void	error_in_elem(t_data *d, char *line);
-void	error_dup_elem(t_data *d, char *line);
+/* void	error_in_elem(t_data *d, char *line);
+void	error_dup_elem(t_data *d, char *line); */
+
+/* - - - - - -[free.c] - - - - - -*/
+void	ft_free_data(t_data *d);
+void	ft_free_data2(t_data *d);
+void	ft_no_leak(t_data *d, char *line);
 
 /* - - - - - -[rgb_check.c] - - - - - -*/
 void	put_rgb(t_data *d, char *line, int flag);

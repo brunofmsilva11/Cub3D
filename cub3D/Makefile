@@ -6,7 +6,7 @@
 #    By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/09 11:46:40 by bmota-si          #+#    #+#              #
-#    Updated: 2024/04/10 16:39:00 by bmota-si         ###   ########.fr        #
+#    Updated: 2024/04/11 14:12:32 by bmota-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ MINILIBX = ./minilibx-linux/libmlx.a
 
 SRCS = 	./main.c mandatory/init/init.c mandatory/init/init2.c mandatory/map_file/check_file.c \
 			mandatory/map_file/direc_color.c mandatory/map_file/rgb_check.c \
-			mandatory/error.c mandatory/utils.c \
+			mandatory/error.c mandatory/utils.c mandatory/free.c mandatory/exit_command.c \
 
 OBJS = $(SRCS:%.c=%.o)
 
@@ -36,6 +36,9 @@ $(MINILIBX):
 
 $(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MINILIBX) $(MFLAGS) -o $(NAME) -lm
+
+gdb:
+		gdb --tui --args ./cub3D maps/map.cub
 
 clean:
 	@$(MAKE) clean -C ./libft
