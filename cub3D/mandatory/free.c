@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:01:38 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/11 15:22:27 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/12 15:17:42 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,19 @@ void	ft_no_leak(t_data *d, char *line)
 		line = get_next_line(d->fd);
 		if (!line)
 			break ;
-		valid_info(d, line);
+		check_direc(d, line);
+		free(line);
+	}
+	close(d->fd);
+}
+
+void	ft_no_leak2(t_data *d, char *line)//esta funcao serve para quando esta a verificar se o ficheiro e NULL as variaveis nao assumirem logo o valor!
+{
+	while (1)
+	{
+		line = get_next_line(d->fd);
+		if (!line)
+			break ;
 		free(line);
 	}
 	close(d->fd);

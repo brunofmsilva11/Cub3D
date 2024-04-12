@@ -6,7 +6,7 @@
 #    By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/09 11:46:40 by bmota-si          #+#    #+#              #
-#    Updated: 2024/04/11 14:12:32 by bmota-si         ###   ########.fr        #
+#    Updated: 2024/04/12 11:49:48 by bmota-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,9 @@ $(MINILIBX):
 
 $(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MINILIBX) $(MFLAGS) -o $(NAME) -lm
+
+leaks:
+		valgrind --leak-check=full --show-leak-kinds=all ./cub3D maps/map.cub
 
 gdb:
 		gdb --tui --args ./cub3D maps/map.cub

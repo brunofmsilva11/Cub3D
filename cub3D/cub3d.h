@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:47:06 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/11 15:21:04 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/12 12:13:29 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,15 +126,15 @@ typedef struct s_data
 /* - - - - - -[INIT] - - - - - -*/
 
 //init.c
-void	ft_init_stack(t_data *d);
-void	ft_init_stack1(t_data *d);
-void	ft_init_stack2(t_data *d);
-void	ft_init_stack3(t_data *d);
-void	ft_init_stack4(t_data *d);
+void			ft_init_stack(t_data *d);
+void			ft_init_stack1(t_data *d);
+void			ft_init_stack2(t_data *d);
+void			ft_init_stack3(t_data *d);
+void			ft_init_stack4(t_data *d);
 
 //init2.c
-void	init_struct_imgs(t_data *d);
-int     check_access(t_data *d);
+void			init_struct_imgs(t_data *d);
+int     		check_access(t_data *d);
 
 
 /**************************************************************************************************************/
@@ -143,64 +143,57 @@ int     check_access(t_data *d);
 /* - - - - - -[MAP_FILE] - - - - - -*/
 
 //check_file.c
-void	args_in_file(t_data *d, char *file_name);
-void	ft_check_map_file(t_data *d, char *file_name);
+void			six_args(t_data *d, char *file_name);
+void			check_null_file(t_data *d, char *file_name);
+void			ft_check_map_file(t_data *d, char *file_name);
 
 //direc_color.c
-int		valid_info(t_data *d, char *line);
-int		valid_info1(t_data *d, char *line);
-int		valid_info2(t_data *d, char *line);
-void	path_image(t_data *d, char *line, int flag);
-void	error_in_elem(t_data *d, char *line);
-void	error_dup_elem(t_data *d, char *line);
+int				check_direc(t_data *d, char *line);
+int				check_direc2(t_data *d, char *line);
+int				check_color(t_data *d, char *line);
+void			path_image(t_data *d, char *line, int flag);
 
 //rgb_check.c
-void	put_rgb(t_data *d, char *line, int flag);
-int		ft_check_next_comma(char *line);
-int		ft_verify_digits(char *str, int position);
-void	put_fc_rgb(t_data *d, int flag, char *line);
-int		check_for_spaces(char *str);
+void			put_rgb(t_data *d, char *line, int flag);
+int				ft_check_next_comma(char *line);
+int				ft_verify_digits(char *str, int position);
+void			put_fc_rgb(t_data *d, int flag, char *line);
+int				check_for_spaces(char *str);
 
 
 /**************************************************************************************************************/
 /* - - - - - -[error.c] - - - - - -*/
-void	finish_error(char *str, int i);
-void	file_name_error(t_data *d);
-void	error_handling(char *line, t_data *d, char *str);
+void			finish_error(char *str, int i);
+void			file_name_error(t_data *d);
+void			error_rgb(char *line, t_data *d, char *str);
+void			error_in_elem(t_data *d, char *line);
+void			error_dup_elem(t_data *d, char *line);
 
 /* - - - - - -[exit_command.c] - - - - - -*/
-int    ft_exit_x(t_data *d);
-int		handle_input(int keysym, t_data *d);
-
-/* - - - - - -[file.c] - - - - - -*/
-/* void	args_in_file(t_data *d, char *file_name);
-int		valid_info(t_data *d, char *line);
-int		valid_info1(t_data *d, char *line);
-int	    valid_info2(t_data *d, char *line); */
-/* void	error_in_elem(t_data *d, char *line);
-void	error_dup_elem(t_data *d, char *line); */
+int    			ft_exit_x(t_data *d);
+int				handle_input(int keysym, t_data *d);
 
 /* - - - - - -[free.c] - - - - - -*/
-void	ft_free_data(t_data *d);
-void	ft_free_data2(t_data *d);
-void	ft_no_leak(t_data *d, char *line);
-
+void			ft_free_data(t_data *d);
+void			ft_free_data2(t_data *d);
+void			ft_no_leak(t_data *d, char *line);
+void			ft_no_leak2(t_data *d, char *line);
 /* - - - - - -[rgb_check.c] - - - - - -*/
-void	put_rgb(t_data *d, char *line, int flag);
-int		ft_check_next_comma(char *line);
-int		ft_verify_digits(char *str, int position);
-void	put_fc_rgb(t_data *d, int flag, char *line);
-int		check_for_spaces(char *str);
+void			put_rgb(t_data *d, char *line, int flag);
+int				ft_check_next_comma(char *line);
+int				ft_verify_digits(char *str, int position);
+void			put_fc_rgb(t_data *d, int flag, char *line);
+int				check_for_spaces(char *str);
 
 /* - - - - - -[utils.c] - - - - - -*/
-int		string_comp(char *s1, char *s2);
-int		ft_count(char *str, char c);
+int				string_comp(char *s1, char *s2);
+int				ft_count(char *str, char c);
 
 /* - - - - - -[xpm_files.c] - - - - - -*/
-void	get_imgs_xpm(t_data *d);
-void	get_imgs_addr(t_data *d);
+void			get_imgs_xpm(t_data *d);
+void			get_imgs_addr(t_data *d);
 
 /* - - - - - -[main.c] - - - - - -*/
-int		main(int ac, char **av);
+int				main(int ac, char **av);
 
 #endif

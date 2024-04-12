@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:04:01 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/11 12:09:40 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/12 11:46:23 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,14 @@ void	put_rgb(t_data *d, char *line, int flag)
 	i = 0;
 	d->map_utils->color_aux = ft_split(line + 2, ',');
 	if (ft_count(line, ',') != 2 || ft_check_next_comma(line) == 1)//Verifica se apenas existem 2 virgulas e se a posicao anterior e depois da virgula sao numeros!
-		printf("Erro nas virgulas!\n");
-		//error_handling(line, d, "Error: Wrong number of color values!\n");
+		error_rgb(line, d, "Error: Wrong number of color values!\n");
 	while (i < 3)
 	{
 		if (ft_verify_digits(d->map_utils->color_aux[i], i))
-			printf("Erro ao verificar os numeros rgb!\n");
-			//error_handling(line, d, "Error: Wrong value in RGB!\n");
+			error_rgb(line, d, "Error: Wrong value in RGB!\n");
 		if (!(ft_atoi(d->map_utils->color_aux[i]) >= 0
 				&& ft_atoi(d->map_utils->color_aux[i]) <= 255))
-			printf("Numero invalido!");
-			//error_handling(line, d, "Error: Wrong value in RGB!\n");
+			error_rgb(line, d, "Error: Wrong value in RGB!\n");
 		i++;
 	}
 	if (flag == 1)

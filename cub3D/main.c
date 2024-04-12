@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:46:36 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/11 14:41:13 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/12 11:36:55 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ int	main(int ac, char **av)
 	data->map_utils = malloc(sizeof(t_map));
 	ft_init_stack(data);//inicia as variaveis de data
 	ft_check_map_file(data, av[1]);//Verifica se o mapa e valido!
-	/* void	*mlx_ptr;
-	void	*win_ptr; */
+	
 	data->mlx_ptr = mlx_init();
 	if (data->mlx_ptr == NULL)
 		return (1);

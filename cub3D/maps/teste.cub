@@ -1,8 +1,12 @@
 
 
-NO Norte
-SO SUL
-WE Oeste
-EA Este
-F 93247,982734,239759
-C 239058,903275,02973
+
+NO               textures/nnn_letter.xpm                      
+SO textures/sss_letter.xpm
+WE 			textures/www_letter.xpm
+F     153,76,210
+EA textures/eee_letter.xpm
+C	231,21,243
+
+
+
