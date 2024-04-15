@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:46:36 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/12 11:36:55 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/15 17:31:10 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@ int	main(int ac, char **av)
 	data->mlx_ptr = mlx_init();
 	if (data->mlx_ptr == NULL)
 		return (1);
-	//init_struct_imgs(data);
-	//ft_init_stack3(data);
+	init_struct_imgs(data);
+	ft_init_stack3(data);
 	//get_imgs_xpm(data);
 	data->win_ptr = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT, "CUB3D");
+	put_color_on_window(data);
 	//win_ptr = mlx_new_window(mlx_ptr, 800, 800, "Dados_CUB3D");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 50, 50, 0x00FFFFFF, data->map_utils->no);
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 150, 150, 0x00FFFFFF, data->map_utils->so);

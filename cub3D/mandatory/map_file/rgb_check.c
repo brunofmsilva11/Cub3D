@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:04:01 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/12 11:46:23 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/15 16:01:14 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ void	put_fc_rgb(t_data *d, int flag, char *line)
 	{
 		temp = ft_strtrim(line, " \t\n");
 		d->map_utils->c_color = ft_split(temp + 2, ',');
+		*d->map_utils->c_color = remove_tabs(*d->map_utils->c_color);
 		d->map_utils->flag_c = 1;
 	}
 	if (temp)

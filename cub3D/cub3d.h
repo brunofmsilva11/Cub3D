@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:47:06 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/12 12:13:29 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/15 18:03:37 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,18 @@ int				ft_verify_digits(char *str, int position);
 void			put_fc_rgb(t_data *d, int flag, char *line);
 int				check_for_spaces(char *str);
 
+//rgb_check2.c
+char			*remove_tabs(char *str);
+
+
+/*- - - - - - [WINDOW] - - - - - -*/
+
+//win_color.c
+void    		put_color_on_window(t_data *d);
+void    		put_color_on_window2(t_data *d, int f_color, int c_color);
+
+//win_utils.c
+void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 /**************************************************************************************************************/
 /* - - - - - -[error.c] - - - - - -*/

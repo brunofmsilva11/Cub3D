@@ -6,7 +6,7 @@
 #    By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/09 11:46:40 by bmota-si          #+#    #+#              #
-#    Updated: 2024/04/12 11:49:48 by bmota-si         ###   ########.fr        #
+#    Updated: 2024/04/15 17:09:07 by bmota-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,9 @@ LIBFT = ./libft/libft.a
 MINILIBX = ./minilibx-linux/libmlx.a
 
 SRCS = 	./main.c mandatory/init/init.c mandatory/init/init2.c mandatory/map_file/check_file.c \
-			mandatory/map_file/direc_color.c mandatory/map_file/rgb_check.c \
+			mandatory/map_file/direc_color.c mandatory/map_file/rgb_check.c mandatory/map_file/rgb_check2.c \
 			mandatory/error.c mandatory/utils.c mandatory/free.c mandatory/exit_command.c \
+			mandatory/window/win_color.c mandatory/window/win_utils.c \
 
 OBJS = $(SRCS:%.c=%.o)
 
