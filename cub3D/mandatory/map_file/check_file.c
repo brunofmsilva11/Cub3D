@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bmota-si <bmota-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:57:34 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/12 15:53:59 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/16 17:36:19 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	six_args(t_data *d, char *file_name)
 		d->map_utils->skip_count++;
 	}
 	ft_no_leak(d, line);//Verifica o resto do mapa.
-	//ft_check_textures(d);
-	//map_to_file(d, file_name);
+	ft_check_textures(d);
+	map_to_file(d, file_name);
 }
 
 void	check_null_file(t_data *d, char *file_name)
@@ -47,8 +47,8 @@ void	check_null_file(t_data *d, char *file_name)
 		ft_free_data(d);
 		finish_error("Error: no content on file\n", 2);
 	}
-	free(line);
 	ft_no_leak2(d, line);
+	free(line);
 }
 
 void	ft_check_map_file(t_data *d, char *file_name)

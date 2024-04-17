@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bmota-si <bmota-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:47:06 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/15 18:03:37 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/16 17:45:31 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <unistd.h>
 # include <math.h>
 # include <signal.h>
+# include <sys/stat.h>
 # define HEIGHT 1080
 # define WIDTH 850
 # define WALL 0xffffff
@@ -146,6 +147,10 @@ int     		check_access(t_data *d);
 void			six_args(t_data *d, char *file_name);
 void			check_null_file(t_data *d, char *file_name);
 void			ft_check_map_file(t_data *d, char *file_name);
+
+//check_textures.c
+void			ft_check_textures(t_data *d);
+void			ft_check_textures2(t_data *d);
 
 //direc_color.c
 int				check_direc(t_data *d, char *line);
