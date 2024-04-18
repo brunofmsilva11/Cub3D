@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:54:37 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/16 16:30:32 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/17 11:10:26 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,14 @@ void	error_dup_elem(t_data *d, char *line)
 	free(line);
 	ft_free_data2(d);
 	finish_error("Error2: invalid elements!\n", 2);
+}
+
+void	no_tab_error_handle(t_data *d)
+{
+	close(d->fd);
+	close(d->temp_fd);
+	ft_no_leak(d, d->line);
+	free(d->line); //alterar para cima
+	ft_free_data2(d);
+	finish_error("Error\nProgram does not suport tabs\n", 2);
 }

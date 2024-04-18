@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:57:34 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/16 17:36:19 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/17 11:17:32 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	six_args(t_data *d, char *file_name)
 	}
 	ft_no_leak(d, line);//Verifica o resto do mapa.
 	ft_check_textures(d);
-	map_to_file(d, file_name);
+	map_validation_test(d, file_name);
+	//map_to_file(d, file_name);
 }
 
 void	check_null_file(t_data *d, char *file_name)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bmota-si <bmota-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:01:38 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/12 15:17:42 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/17 09:40:43 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,3 +93,27 @@ void	ft_no_leak2(t_data *d, char *line)//esta funcao serve para quando esta a ve
 	close(d->fd);
 }
 
+int	ft_no_leak3(t_data *d, char *line)
+{
+	int	i;
+
+	i = 0;
+	while (1)
+	{
+		if (line)
+		{
+			while (line)
+			{
+				free(line);
+				line = get_next_line(d->fd);
+			}
+			return (0);
+		}
+		else
+			break ;
+	}
+	close(d->fd);
+	if (i == 0)
+		return (1);
+	return (0);
+}

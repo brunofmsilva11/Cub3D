@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:38:46 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/16 17:48:06 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/17 11:11:44 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void	search_for_map_elem(t_data *d)
 	{
 		if (!ft_search_space(d->line))
 		{
-			free(d->line);
 			ft_no_leak(d, d->line);
-			ft_free_game(d);
+			free(d->line);//alterar para cima
+			ft_free_data2(d);
 			finish_error("Error: invalid element position!\n", 2);
 		}
 		free(d->line);
@@ -59,7 +59,7 @@ void	map_to_file2(t_data *d)
 	if (ft_no_leak3(d, d->line) == 0)
 	{
 		close(d->temp_fd);
-		ft_free_game(d);
+		ft_free_data2(d);
 		finish_error("ERROR: Invalid elements after the map!\n", 2);
 	}
 	close(d->temp_fd);
@@ -71,18 +71,18 @@ void	map_to_matrix(t_data *d)
 	d->fd = open("map_temp.map", O_RDONLY);
 	d->count_lines = ft_count_lines(d);
 	d->map_utils->map = ft_calloc(d->count_lines + 1, sizeof(char *));
-	ft_fill_map_index(d);
+	//ft_fill_map_index(d);
 	close (d->fd);
 }
 
-void	ft_fill_map_index(t_data *d)
+/* void	ft_fill_map_index(t_data *d)
 {
 	char	*str;
 
 	d->i = 0;
 	d->fd = open("map_temp.map", O_RDONLY);
 	d->i = 1;
-	put_first_last(d);
+	put_first_last(d);//colocar a primeira e ultima linha do mapa com '#'
 	while (d->i <= d->count_lines)
 	{
 		str = get_next_line(d->fd);
@@ -96,5 +96,5 @@ void	ft_fill_map_index(t_data *d)
 		d->i++;
 	}
 	close(d->fd);
-	fill_rest(d);
-}
+	//fill_rest(d);
+} */

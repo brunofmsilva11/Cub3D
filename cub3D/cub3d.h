@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:47:06 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/16 17:45:31 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/17 11:26:17 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,20 @@ void			six_args(t_data *d, char *file_name);
 void			check_null_file(t_data *d, char *file_name);
 void			ft_check_map_file(t_data *d, char *file_name);
 
+//check_file2.c
+void			map_to_file(t_data *d, char *file_name);
+void			search_for_map_elem(t_data *d);
+void			map_to_file2(t_data *d);
+void			map_to_matrix(t_data *d);
+void			ft_fill_map_index(t_data *d);
+
+//check_file3.c
+void			put_first_last(t_data *d);
+//static 			void	process_tabs_and_spaces(char *str, char *line, t_data *d);
+//static 			void	fill_remaining_with_hash(char *line, t_data *d);
+char			*fill_matrix_line(t_data *d, char *str);
+void			fill_rest(t_data *d);
+
 //check_textures.c
 void			ft_check_textures(t_data *d);
 void			ft_check_textures2(t_data *d);
@@ -169,6 +183,18 @@ int				check_for_spaces(char *str);
 char			*remove_tabs(char *str);
 
 
+/**************************************************************************************************************/
+
+
+/*- - - - - - [TEST_MAP_VALIDATION] - - - - - -*/
+
+//test.c
+void			map_validation_test(t_data *d, char *file_name);
+
+
+/**************************************************************************************************************/
+
+
 /*- - - - - - [WINDOW] - - - - - -*/
 
 //win_color.c
@@ -179,12 +205,15 @@ void    		put_color_on_window2(t_data *d, int f_color, int c_color);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 /**************************************************************************************************************/
+
+
 /* - - - - - -[error.c] - - - - - -*/
 void			finish_error(char *str, int i);
 void			file_name_error(t_data *d);
 void			error_rgb(char *line, t_data *d, char *str);
 void			error_in_elem(t_data *d, char *line);
 void			error_dup_elem(t_data *d, char *line);
+void			no_tab_error_handle(t_data *d);
 
 /* - - - - - -[exit_command.c] - - - - - -*/
 int    			ft_exit_x(t_data *d);
@@ -195,6 +224,7 @@ void			ft_free_data(t_data *d);
 void			ft_free_data2(t_data *d);
 void			ft_no_leak(t_data *d, char *line);
 void			ft_no_leak2(t_data *d, char *line);
+int				ft_no_leak3(t_data *d, char *line);
 /* - - - - - -[rgb_check.c] - - - - - -*/
 void			put_rgb(t_data *d, char *line, int flag);
 int				ft_check_next_comma(char *line);
@@ -205,6 +235,9 @@ int				check_for_spaces(char *str);
 /* - - - - - -[utils.c] - - - - - -*/
 int				string_comp(char *s1, char *s2);
 int				ft_count(char *str, char c);
+int				ft_search(char *str, char c);
+int				ft_search_space(char *str);
+int				ft_count_lines(t_data *d);
 
 /* - - - - - -[xpm_files.c] - - - - - -*/
 void			get_imgs_xpm(t_data *d);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bmota-si <bmota-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:46:36 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/15 17:31:10 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/17 11:36:36 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	main(int ac, char **av)
 {
 	t_data	*data;
-	int i;
-	int x;
+	/* int i;
+	int x; */
 
 	(void)av;
 	if (ac != 2)
@@ -35,7 +35,7 @@ int	main(int ac, char **av)
 	init_struct_imgs(data);
 	ft_init_stack3(data);
 	//get_imgs_xpm(data);
-	data->win_ptr = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT, "CUB3D");
+	/* data->win_ptr = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT, "CUB3D");
 	put_color_on_window(data);
 	//win_ptr = mlx_new_window(mlx_ptr, 800, 800, "Dados_CUB3D");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 50, 50, 0x00FFFFFF, data->map_utils->no);
@@ -53,9 +53,9 @@ int	main(int ac, char **av)
 	}
 	mlx_hook(data->win_ptr, KeyPress, KeyPressMask, handle_input, data);//Quando esc e carregado fecha programa e da frees!
 	mlx_hook(data->win_ptr, DestroyNotify, ButtonPressMask, ft_exit_x, data);//Quando X e carregado fecha programa e da frees!
-	mlx_loop(data->mlx_ptr);
+	mlx_loop(data->mlx_ptr); */
 	ft_free_data(data);
-	free(data->win_ptr);
-	free(data->mlx_ptr);
+	//free(data->win_ptr);
+	//free(data->mlx_ptr);
 	return (0);
 }

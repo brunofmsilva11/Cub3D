@@ -6,7 +6,7 @@
 #    By: bmota-si <bmota-si@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/09 11:46:40 by bmota-si          #+#    #+#              #
-#    Updated: 2024/04/16 17:38:35 by bmota-si         ###   ########.fr        #
+#    Updated: 2024/04/17 11:28:29 by bmota-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS = 	./main.c mandatory/init/init.c mandatory/init/init2.c mandatory/map_file
 			mandatory/map_file/direc_color.c mandatory/map_file/rgb_check.c mandatory/map_file/rgb_check2.c \
 			mandatory/error.c mandatory/utils.c mandatory/free.c mandatory/exit_command.c \
 			mandatory/window/win_color.c mandatory/window/win_utils.c \
+			mandatory/test_map_validation/test.c \
 
 OBJS = $(SRCS:%.c=%.o)
 
