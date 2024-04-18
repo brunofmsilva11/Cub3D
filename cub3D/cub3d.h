@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmota-si <bmota-si@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:47:06 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/17 11:26:17 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/18 15:31:06 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,6 +225,7 @@ void			ft_free_data2(t_data *d);
 void			ft_no_leak(t_data *d, char *line);
 void			ft_no_leak2(t_data *d, char *line);
 int				ft_no_leak3(t_data *d, char *line);
+void			free_imgs(t_data *d);
 /* - - - - - -[rgb_check.c] - - - - - -*/
 void			put_rgb(t_data *d, char *line, int flag);
 int				ft_check_next_comma(char *line);

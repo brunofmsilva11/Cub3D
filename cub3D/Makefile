@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bmota-si <bmota-si@student.42porto.com>    +#+  +:+       +#+         #
+#    By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/09 11:46:40 by bmota-si          #+#    #+#              #
-#    Updated: 2024/04/17 11:28:29 by bmota-si         ###   ########.fr        #
+#    Updated: 2024/04/18 16:05:59 by bmota-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ leaks:
 		valgrind --leak-check=full --show-leak-kinds=all ./cub3D maps/map.cub
 
 gdb:
-		gdb --tui --args ./cub3D maps/map.cub
+		gdb --tui --args ./cub3D maps/teste.cub
 
 clean:
 	@$(MAKE) clean -C ./libft

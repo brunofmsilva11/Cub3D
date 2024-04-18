@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmota-si <bmota-si@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:01:38 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/17 09:40:43 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/18 15:30:39 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,4 +116,13 @@ int	ft_no_leak3(t_data *d, char *line)
 	if (i == 0)
 		return (1);
 	return (0);
+}
+
+void	free_imgs(t_data *d)
+{
+	free(d->img);
+	free(d->e_img);
+	free(d->n_img);
+	free(d->w_img);
+	free(d->s_img);
 }
