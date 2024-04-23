@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmota-si <bmota-si@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:54:37 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/17 11:10:26 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/23 14:47:54 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	error_in_elem(t_data *d, char *line)
 
 void	error_dup_elem(t_data *d, char *line)
 {
-	printf("%s", line);
 	ft_no_leak(d, line);
 	free(line);
 	ft_free_data2(d);

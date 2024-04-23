@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:01:38 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/18 15:30:39 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/23 12:24:37 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	ft_free_data(t_data *d)
 	if (d->map_utils->we)
 		free(d->map_utils->we);
 	free(d->map_utils);
-    if (d->win_ptr)
-		mlx_destroy_window(d->mlx_ptr, d->win_ptr);
-    mlx_destroy_display(d->mlx_ptr);
+    /* if (d->win_ptr)
+		mlx_destroy_window(d->mlx_ptr, d->win_ptr); */
+    //mlx_destroy_display(d->mlx_ptr);
     free(d->mlx_ptr);
 	free(d);
 }
