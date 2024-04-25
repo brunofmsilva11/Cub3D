@@ -44,7 +44,7 @@ leaks:
 		valgrind --leak-check=full --show-leak-kinds=all ./cub3D maps/map.cub
 
 gdb:
-		gdb --tui --args ./cub3D maps/map.cub
+		gdb --tui --args ./cub3D maps/teste.cub
 
 clean:
 	@$(MAKE) clean -C ./libft

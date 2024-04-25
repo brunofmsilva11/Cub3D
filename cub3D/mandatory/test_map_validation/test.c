@@ -38,6 +38,36 @@ int	check_for_spaces2(char *str)
 	return (0);
 }
 
+void obtain_row(t_data *d, int *rows, int *col)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while(d->map_utils->map[i][j] == ' ' || d->map_utils->map[i][j] == '1' || d->map_utils->map[i][j] == '0')
+	{
+		if(d->map_utils->map[i][j] == ' ')
+		{
+			while(d->map_utils->map[i][j] == ' ')
+				j++;
+		}
+		if(d->map_utils->map[i][j] == '1')
+		{
+			while(d->map_utils->map[i][j] == '1' || d->map_utils->map[i][j] == '0')
+				j++;
+		}
+		if(d->map_utils->map[i][j] == '\n')
+		{
+			if(*col < j - 1)
+				*col = j;
+			j = 0;
+			i++;
+		}
+	}
+	*rows = i;
+}
+
 int	is_map_closed(t_data *d)
 {
 	int i;
@@ -49,6 +79,8 @@ int	is_map_closed(t_data *d)
 	j = 0;
 	rows = 0;
 	col = 0;
+	obtain_row(d, &rows, &col);
+	printf("%i, %i", rows, col);
 	while(d->map_utils->map[i][j] == '1')
 		i++;
 	rows = i;
@@ -113,7 +145,6 @@ void	map_validation_test(t_data *d, char *file_name)
     }
 	if (line)
 		i = 1;
-	printf("%s", line);
 	while (line)
 	{
 		printf("%s", line);
