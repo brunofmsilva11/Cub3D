@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:57:34 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/18 15:31:34 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/30 12:42:58 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ void	six_args(t_data *d, char *file_name)
 		free(line);
 		d->map_utils->skip_count++;
 	}
+	printf("%i linhas!\n", d->map_utils->skip_count);
 	ft_no_leak(d, line);//Verifica o resto do mapa.
 	ft_check_textures(d);
-	map_validation_test(d, file_name);
+	map_validation_test(d, file_name);//verifica o mapa depois de verificar os primeiros 6 elementos!
 	//map_to_file(d, file_name);
 }
 

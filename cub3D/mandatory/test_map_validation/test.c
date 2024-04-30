@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 11:18:15 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/23 15:55:34 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/04/30 19:01:36 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,102 @@ void obtain_row(t_data *d, int *rows, int *col)
 	*rows = i;
 }
 
+int check_coord(t_data *d, int i, int j)
+{
+	if (i < d->line_height - 1)//exceto a ultima linha
+		if (d->map_utils->map[i + 1][j])
+			if (d->map_utils->map[i + 1][j] == '0')
+				return (0);
+	if (i > 0)//exceto a primeira linha
+		if (d->map_utils->map[i - 1][j])
+			if (d->map_utils->map[i - 1][j] == '0')
+				return (0);
+	if (d->map_utils->map[i][j] != '\n')//exceto a ultima coluna de cada linha
+		if (d->map_utils->map[i][j + 1])
+			if (d->map_utils->map[i][j + 1] == '0')
+				return (0);
+	if (j > 0)//exceto a primeira coluna
+		if (d->map_utils->map[i][j - 1])
+			if (d->map_utils->map[i][j - 1] == '0')
+				return (0);
+	/* if (i < d->map_utils->skip_count - 1 && d->map_utils->map[i][j] != '\n')//exceto ultima linha e ultima coluna
+		if (d->map_utils->map[i + 1][j + 1])
+			if (d->map_utils->map[i + 1][j + 1] == '0')
+				return (0);
+	if (i > 0 && j > 0)//exceto primeira linha e primeira coluna
+		if (d->map_utils->map[i - 1][j - 1])
+			if (d->map_utils->map[i - 1][j - 1] == '0')
+				return (0);
+	if (j > 0 && i < d->map_utils->skip_count - 1)//exceto a primeira coluna e ultima linha
+		if (d->map_utils->map[i + 1][j - 1])
+			if (d->map_utils->map[i + 1][j - 1] == '0')
+				return (0);
+	if (i > 0 && d->map_utils->map[i][j] != '\n')//exceto a primeira linha e ultima coluna
+		if (d->map_utils->map[i - 1][j + 1])
+			if (d->map_utils->map[i - 1][j + 1] == '0')
+				return (0); */
+	return (1);
+}
+
+int check_value(char a)
+{
+	if (a != '1' && a != '0' && a != ' ' && a != '\n')
+		if(a != 'N' && a != 'W' && a != 'E' && a != 'S')
+			return (0);
+	return (1);
+}
+
+int check_first_last(t_data *d)
+{
+	int j;
+	
+	j = 0;
+	while(d->map_utils->map[0][j])
+	{
+		if (d->map_utils->map[0][j] == '1' || d->map_utils->map[0][j] == ' ')
+			j++;
+		else
+			return (0);
+	}
+	j = 0;
+	while(d->map_utils->map[d->line_height][j])
+	{
+		if (d->map_utils->map[d->line_height][j] == '1' || d->map_utils->map[d->line_height][j] == ' ')
+			j++;
+		else
+			return (0);
+	}
+	return (1);
+}
+
+int is_map_closed2(t_data *d)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	//put_spaces(d->map_utils->map[i])
+	if (!check_first_last(d))
+		return (0);
+	while(d->map_utils->map[i][j])
+	{
+		if (!check_value(d->map_utils->map[i][j]))
+			return (0);
+		if (d->map_utils->map[i][j] == ' ' || d->map_utils->map[i][j] == '\n')
+			if(check_coord(d, i, j) == 0)
+					return (0);
+		if(d->map_utils->map[i][j] == '\n')
+		{
+			j = 0;
+			i++;
+		}
+		else
+			j++;
+	}
+	return (1);
+}
+
 int	is_map_closed(t_data *d)
 {
 	int i;
@@ -122,38 +218,36 @@ void	map_validation_test(t_data *d, char *file_name)
 {
     char *line;
 	int i;
-	
-    i = 0;
+	int j;
+
+	i = d->map_utils->skip_count;
     d->fd = open(file_name, O_RDONLY);
-	line = get_next_line(d->fd);
-	while (i < 6)
-    {
-		free(line);
-		line = get_next_line(d->fd);
-		i++;
-	}
-	free(line);
-    while (1) 
+    while (i != 0) 
 	{
         line = get_next_line(d->fd);
-        if (!line || line[0] != '\n')
-		{
-            //free(line);
+        if (!line)
             break;
-        }
+		i--;
         free(line);
     }
 	if (line)
-		i = 1;
+		i = d->map_utils->skip_count;
 	while (line)
 	{
-		printf("%s", line);
-		free(line);
 		line = get_next_line(d->fd);
-		i++;
+		if (!line)
+			break;
+		if (d->line_length < (int)ft_strlen(line))
+			d->line_length = ft_strlen(line) - 1;
+		if (ft_strcmp(line, "\n"))
+		{
+			printf("%s", line);
+			i++;
+		}
+		free(line);
 	}
-	free(line);
-	printf("%i\n", i);
+	printf("%i linhas!\n", i - d->map_utils->skip_count);
+	d->line_height = i - d->map_utils->skip_count;
 	d->map_utils->map = malloc(sizeof(char *) * i + 1);
 	i = 0;
 	close(d->fd);
@@ -169,6 +263,7 @@ void	map_validation_test(t_data *d, char *file_name)
 	i = 0;
 	while(line)
 	{
+		j = 0;
 		free(line);
 		line = get_next_line(d->fd);
 		/* if (!ft_strcmp(line, "\t"))//Se existir linhas com tab ignora a linha!
@@ -182,8 +277,26 @@ void	map_validation_test(t_data *d, char *file_name)
 			;
 		else if (check_char(line))
 		{
-			d->map_utils->map[i] = ft_strdup(line);
-			//printf("map*%s", d->map_utils->map[i]);
+			d->map_utils->map[i] = malloc(sizeof(char) * (d->line_length + 2));
+			while(j < d->line_length)
+			{
+				while(line[j] != '\0' && line[j] != '\n')
+				{
+					d->map_utils->map[i][j] = line[j];
+					//printf("map*%s", d->map_utils->map[i]);
+					j++;		
+				}
+				/* if(line[j] == '\n')
+					d->map_utils->map[i][j] = ' ';
+				j++; */
+				while(j < d->line_length)
+				{
+					d->map_utils->map[i][j] = ' ';
+					j++;
+				}
+			}
+			d->map_utils->map[i][j] = '\n';
+			d->map_utils->map[i][j + 1] = '\0';
 			i++;
 		}
 		else
@@ -191,7 +304,7 @@ void	map_validation_test(t_data *d, char *file_name)
 		//printf("%s", line);
 	}
 	d->map_utils->map[i] = "\0";
-	if(is_map_closed(d))
+	if(is_map_closed2(d))
 		printf("Mapa FECHADO!\n");
 	else
 		printf("Mapa invalido!\n");
