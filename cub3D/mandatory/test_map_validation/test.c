@@ -118,7 +118,7 @@ int check_first_last(t_data *d)
 	int j;
 	
 	j = 0;
-	while(d->map_utils->map[0][j])
+	while(d->map_utils->map[0][j] && d->map_utils->map[0][j] != '\n')
 	{
 		if (d->map_utils->map[0][j] == '1' || d->map_utils->map[0][j] == ' ')
 			j++;
@@ -126,7 +126,8 @@ int check_first_last(t_data *d)
 			return (0);
 	}
 	j = 0;
-	while(d->map_utils->map[d->line_height][j])
+	d->line_height -= 1;
+	while(d->map_utils->map[d->line_height][j] && d->map_utils->map[d->line_height][j] != '\n')
 	{
 		if (d->map_utils->map[d->line_height][j] == '1' || d->map_utils->map[d->line_height][j] == ' ')
 			j++;
