@@ -68,23 +68,23 @@ void obtain_row(t_data *d, int *rows, int *col)
 	*rows = i;
 }
 
-int check_coord(t_data *d, int i, int j)
+int check_coord(t_data *d, int i, int j, char a)
 {
 	if (i < d->line_height - 1)//exceto a ultima linha
 		if (d->map_utils->map[i + 1][j])
-			if (d->map_utils->map[i + 1][j] == '0')
+			if (d->map_utils->map[i + 1][j] == a)
 				return (0);
 	if (i > 0)//exceto a primeira linha
 		if (d->map_utils->map[i - 1][j])
-			if (d->map_utils->map[i - 1][j] == '0')
+			if (d->map_utils->map[i - 1][j] == a)
 				return (0);
 	if (d->map_utils->map[i][j] != '\n')//exceto a ultima coluna de cada linha
 		if (d->map_utils->map[i][j + 1])
-			if (d->map_utils->map[i][j + 1] == '0')
+			if (d->map_utils->map[i][j + 1] == a)
 				return (0);
 	if (j > 0)//exceto a primeira coluna
 		if (d->map_utils->map[i][j - 1])
-			if (d->map_utils->map[i][j - 1] == '0')
+			if (d->map_utils->map[i][j - 1] == a)
 				return (0);
 	return (1);
 }
@@ -94,6 +94,18 @@ int check_value(char a)
 	if (a != '1' && a != '0' && a != ' ' && a != '\n')
 		if(a != 'N' && a != 'W' && a != 'E' && a != 'S')
 			return (0);
+	return (1);
+}
+
+int check_value2(t_data *d, int i, int j)
+{
+	if (d->map_utils->map[i][j] != '1' && d->map_utils->map[i][j] != '0' &&
+			d->map_utils->map[i][j] != ' ' && d->map_utils->map[i][j] != '\n')
+		if(d->map_utils->map[i][j] != 'N' && d->map_utils->map[i][j] != 'W' &&
+				d->map_utils->map[i][j] != 'E' && d->map_utils->map[i][j] != 'S')
+			return (0);
+	if (!check_coord(d, i, j, ' '))
+		return (0);
 	return (1);
 }
 
@@ -132,10 +144,10 @@ int is_map_closed(t_data *d)
 		return (0);
 	while(d->map_utils->map[i][j])
 	{
-		if (!check_value(d->map_utils->map[i][j]))
+		if (!check_value2(d, i, j))
 			return (0);
 		if (d->map_utils->map[i][j] == ' ' || d->map_utils->map[i][j] == '\n')
-			if(check_coord(d, i, j) == 0)
+			if(check_coord(d, i, j, '0') == 0)
 					return (0);
 		if(d->map_utils->map[i][j] == '\n')
 		{
