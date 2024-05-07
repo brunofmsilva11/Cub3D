@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:01:38 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/23 12:24:37 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/07 18:44:31 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@ void	ft_free_data(t_data *d)
 		free(d->map_utils->so);
 	if (d->map_utils->we)
 		free(d->map_utils->we);
+	ft_free_data3(d);
 	free(d->map_utils);
-    /* if (d->win_ptr)
-		mlx_destroy_window(d->mlx_ptr, d->win_ptr); */
-    //mlx_destroy_display(d->mlx_ptr);
+    if (d->win_ptr)
+		mlx_destroy_window(d->mlx_ptr, d->win_ptr);
+    mlx_destroy_display(d->mlx_ptr);
     free(d->mlx_ptr);
 	free(d);
 }
@@ -61,11 +62,31 @@ void	ft_free_data2(t_data *d)
 	if (d->map_utils->we)
 		free(d->map_utils->we);
 	free(d->map_utils);
-    if (d->win_ptr)
-		mlx_destroy_window(d->mlx_ptr, d->win_ptr);
+    /* if (d->win_ptr)
+		mlx_destroy_window(d->mlx_ptr, d->win_ptr); */
     //mlx_destroy_display(d->mlx_ptr);
-    free(d->mlx_ptr);
+    //free(d->mlx_ptr);
 	free(d);
+}
+/*Acrescentei esta funcao para dar free as estruturas de 
+cada imagem e a propria imagem isto so acontece depois
+do mapa ser valido*/
+void	ft_free_data3(t_data *d)
+{
+	if (d->n_img->img)
+		mlx_destroy_image(d->mlx_ptr, d->n_img->img);
+	if (d->s_img->img)
+		mlx_destroy_image(d->mlx_ptr, d->s_img->img);
+	if (d->w_img->img)
+		mlx_destroy_image(d->mlx_ptr, d->w_img->img);
+	if (d->e_img->img)
+		mlx_destroy_image(d->mlx_ptr, d->e_img->img);
+	free(d->n_img);
+	free(d->s_img);
+	free(d->w_img);
+	free(d->e_img);
+	mlx_destroy_image(d->mlx_ptr, d->img->img);
+	free(d->img);
 }
 
 void	ft_no_leak(t_data *d, char *line)
@@ -120,9 +141,14 @@ int	ft_no_leak3(t_data *d, char *line)
 
 void	free_imgs(t_data *d)
 {
-	free(d->img);
-	free(d->e_img);
-	free(d->n_img);
-	free(d->w_img);
-	free(d->s_img);
+	if (d->img)
+        free(d->img);
+    if (d->n_img)
+        free(d->n_img);
+    if (d->s_img)
+        free(d->s_img);
+    if (d->w_img)
+        free(d->w_img);
+    if (d->e_img)
+        free(d->e_img);
 }

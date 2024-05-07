@@ -6,43 +6,15 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:57:10 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/15 18:01:14 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/07 18:41:38 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
+/*Esta funcao multiplica os valores das cores que estao 
+no ficheiro map.cub*/
 void    put_color_on_window(t_data *d)
-{
-    int x, y;
-    int blue = 0x6495ED;
-    int white = 0xDCDCDC;
-
-    x = 0;
-    y = 0;
-    while (y < HEIGHT/2)
-    {
-        x = 0;
-        while (x < WIDTH)
-        {
-            mlx_pixel_put(d->mlx_ptr, d->win_ptr, x, y, blue);
-            x++;
-        }
-        y++;
-    }
-    while (y < HEIGHT)
-    {
-        x = 0;
-        while (x < WIDTH)
-        {
-            mlx_pixel_put(d->mlx_ptr, d->win_ptr, x, y, white);
-            x++;
-        }
-        y++;
-    }
-}
-
-/* void    put_color_on_window(t_data *d)
 {
     unsigned int	f_color;
 	unsigned int	c_color;
@@ -55,7 +27,10 @@ void    put_color_on_window(t_data *d)
 		+ ft_atoi(d->map_utils->c_color[2]);
 	put_color_on_window2(d, f_color, c_color);
 }
-
+/*Esta funcao vai receber as cores e imprimir a parte de cima 
+de uma cor e a parte de baixo de outra, sendo que vai guardar
+a cor de cada pixel num pointer para no fim imprimir tudo ao
+mesmo tempo*/
 void    put_color_on_window2(t_data *d, int f_color, int c_color)
 {
     int	x;
@@ -77,4 +52,4 @@ void    put_color_on_window2(t_data *d, int f_color, int c_color)
 		x++;
 	}
 	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->img, 0, 0);
-} */
+}

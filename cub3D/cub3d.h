@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:47:06 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/18 15:31:06 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/07 18:22:34 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <signal.h>
 # include <sys/stat.h>
 # define HEIGHT 1080
-# define WIDTH 850
+# define WIDTH 1920
 # define WALL 0xffffff
 # define FLOOR 0x000000
 # define GRID 0x838589
@@ -222,6 +222,7 @@ int				handle_input(int keysym, t_data *d);
 /* - - - - - -[free.c] - - - - - -*/
 void			ft_free_data(t_data *d);
 void			ft_free_data2(t_data *d);
+void			ft_free_data3(t_data *d);
 void			ft_no_leak(t_data *d, char *line);
 void			ft_no_leak2(t_data *d, char *line);
 int				ft_no_leak3(t_data *d, char *line);
@@ -245,6 +246,7 @@ void			get_imgs_xpm(t_data *d);
 void			get_imgs_addr(t_data *d);
 
 /* - - - - - -[main.c] - - - - - -*/
+void			ft_start(t_data *d);
 int				main(int ac, char **av);
 
 #endif
