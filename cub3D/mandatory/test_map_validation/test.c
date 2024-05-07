@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 11:18:15 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/30 19:01:36 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/07 12:45:24 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,18 @@ int check_value2(t_data *d, int i, int j)
 		if(d->map_utils->map[i][j] != 'N' && d->map_utils->map[i][j] != 'W' &&
 				d->map_utils->map[i][j] != 'E' && d->map_utils->map[i][j] != 'S')
 			return (0);
-	if (!check_coord(d, i, j, ' '))
-		return (0);
+	if(d->map_utils->map[i][j] == 'N' || d->map_utils->map[i][j] == 'W' ||
+				d->map_utils->map[i][j] == 'E' || d->map_utils->map[i][j] == 'S')
+	{
+			d->map_utils->skip_count++;
+			if(d->map_utils->skip_count > 1)
+			{
+				printf("Mais do que 1 jogador!\n");
+				return (0);
+			}
+			if (!check_coord(d, i, j, ' '))
+				return (0);
+	}
 	return (1);
 }
 
@@ -140,6 +150,7 @@ int is_map_closed(t_data *d)
 
 	i = 0;
 	j = 0;
+	d->map_utils->skip_count = 0;
 	if (!check_first_last(d))
 		return (0);
 	while(d->map_utils->map[i][j])
