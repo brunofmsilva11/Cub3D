@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 11:18:15 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/07 12:45:24 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/08 16:47:14 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int check_char(char *str)
 {
-	if(str[0] == '1')
+	if (str[0] == '1')
 		return (1);
 	return (0);
 }
 
 int check_enter(char *str)
 {
-	if(str[0] == '\n')
+	if (str[0] == '\n')
 		return (1);
 	return (0);
 }
@@ -107,6 +107,8 @@ int check_value2(t_data *d, int i, int j)
 	if(d->map_utils->map[i][j] == 'N' || d->map_utils->map[i][j] == 'W' ||
 				d->map_utils->map[i][j] == 'E' || d->map_utils->map[i][j] == 'S')
 	{
+			d->map_utils->player_pos = d->map_utils->map[i][j];
+			put_player_pos(d, i, j);
 			d->map_utils->skip_count++;
 			if(d->map_utils->skip_count > 1)
 			{
@@ -117,6 +119,12 @@ int check_value2(t_data *d, int i, int j)
 				return (0);
 	}
 	return (1);
+}
+
+void	put_player_pos(t_data *d, int y, int x)
+{
+	d->p_y = y + 0.5;
+	d->p_x = x + 0.5;
 }
 
 int check_first_last(t_data *d)
@@ -267,7 +275,7 @@ void populate_map(t_data *d, int lines_read, char *file_name)
     d->map_utils->map[d->map_utils->skip_count] = "\0";
 }
 
-void map_validation_test(t_data *d, char *file_name)
+void	map_validation_test(t_data *d, char *file_name)
 {
     int lines_read;
 	int i;
@@ -281,7 +289,10 @@ void map_validation_test(t_data *d, char *file_name)
     if (is_map_closed(d))
         printf("Mapa FECHADO!\n");
     else
-        printf("Mapa invalido!\n");
-    d->map_utils->map[lines_read] = NULL;
-    close(d->fd);
+	{
+		printf("Mapa invalido!\n");
+		d->error = 0;
+	}
+	d->map_utils->map[lines_read] = NULL;
+	close(d->fd);
 }

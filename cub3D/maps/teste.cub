@@ -1,14 +1,14 @@
-NO 	textures/nnn_letter.xpm                      
-SO textures/sss_letter.xpm
-WE textures/www_letter.xpm
+NO 	textures/verde.xpm                      
+SO textures/vermelho.xpm
+WE textures/amarelo.xpm
 F 153,76,210
-EA 	textures/eee_letter.xpm
+EA 	textures/preto.xpm
 C 	231,21,243
 
 
 
 
 1111
-1SN11
+10	N11
 1001
 1111

@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 14:31:30 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/10 16:38:04 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/08 14:54:07 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	get_imgs_xpm(t_data *d)
 	if (!d->img->img || !d->n_img->img || !d->s_img->img
 		|| !d->w_img->img || !d->e_img->img)
 	{
-		//ft_free_game4(d);
+		ft_free_data(d);
 		finish_error("Error\nInvalid texture file\n", 2);
 		return ;
 	}

@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:01:38 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/07 18:44:31 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/08 15:40:28 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	ft_free_data(t_data *d)
     free(d->mlx_ptr);
 	free(d);
 }
-
+/*free quando da erro antes de iniciar a janela do jogo 
+ou seja, antes de entrar na funcao ft_start*/
 void	ft_free_data2(t_data *d)
 {
 	if (d->map_utils->flag_c)
@@ -61,11 +62,8 @@ void	ft_free_data2(t_data *d)
 		free(d->map_utils->so);
 	if (d->map_utils->we)
 		free(d->map_utils->we);
-	free(d->map_utils);
-    /* if (d->win_ptr)
-		mlx_destroy_window(d->mlx_ptr, d->win_ptr); */
-    //mlx_destroy_display(d->mlx_ptr);
-    //free(d->mlx_ptr);
+	if (d->map_utils)
+		free(d->map_utils);
 	free(d);
 }
 /*Acrescentei esta funcao para dar free as estruturas de 

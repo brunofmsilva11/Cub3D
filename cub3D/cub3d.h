@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:47:06 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/07 18:22:34 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/08 17:48:32 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ typedef struct s_data
 	int		tex_y;
 	double	text_step;
 	double	text_pos;
+	int		error;
 }	t_data;
 
 /**************************************************************************************************************/
@@ -186,10 +187,41 @@ char			*remove_tabs(char *str);
 /**************************************************************************************************************/
 
 
+/*- - - - - - [START] - - - - - -*/
+//start.c
+void			get_texture_val(t_data *d);
+void			ray_values(t_data *d);
+void			get_hit(t_data *d);
+void			check_side(t_data *d);
+void			ray_calc(t_data *d);
+void			draw_raycast(t_data *d);
+void			ft_start(t_data *d);
+
+//direction.c
+void			direction(t_data *d);
+void			direction2(t_data *d);
+
+//draw.c
+void			ft_draw(t_data *d, int i);
+void			get_wall_x(t_data *d);
+int				ft_get_pixel(t_data *d, int x, int y);
+
+//move.c
+int				game_loop(t_data *d);
+int				ft_movs(t_data *d);
+void			move_vertical(t_data *d, int dir_flag);
+void			move_horizontal(t_data *d, int dir_flag);
+void			rotate_player(t_data *d, int dir_flag);
+
+
+/**************************************************************************************************************/
+
+
 /*- - - - - - [TEST_MAP_VALIDATION] - - - - - -*/
 
 //test.c
 void			map_validation_test(t_data *d, char *file_name);
+void			put_player_pos(t_data *d, int y, int x);
 
 
 /**************************************************************************************************************/
@@ -217,6 +249,7 @@ void			no_tab_error_handle(t_data *d);
 
 /* - - - - - -[exit_command.c] - - - - - -*/
 int    			ft_exit_x(t_data *d);
+int				release_key(int keysym, t_data *d);
 int				handle_input(int keysym, t_data *d);
 
 /* - - - - - -[free.c] - - - - - -*/

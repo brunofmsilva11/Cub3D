@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:37:16 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/15 17:19:19 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/08 15:34:40 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	ft_init_stack1(t_data *d)
 	d->text_step = 0;
 	d->text_pos = 0;
 	d->wall_dir = 0;
+	d->error = 1;
 	ft_init_stack2(d);
 }
 
