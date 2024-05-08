@@ -6,7 +6,7 @@
 #    By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/09 11:46:40 by bmota-si          #+#    #+#              #
-#    Updated: 2024/05/08 17:41:16 by bmota-si         ###   ########.fr        #
+#    Updated: 2024/05/08 18:06:35 by bmota-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,12 @@ RM = rm -rf
 LIBFT = ./libft/libft.a
 MINILIBX = ./minilibx-linux/libmlx.a
 
-SRCS = 	./main.c mandatory/init/init.c mandatory/init/init2.c mandatory/map_file/check_file.c \
+SRCS = 	./main.c mandatory/error/error.c mandatory/error/error2.c \
+			mandatory/init/init.c mandatory/init/init2.c \
+			mandatory/map_file/check_file.c \
 			mandatory/map_file/check_textures.c \
 			mandatory/map_file/direc_color.c mandatory/map_file/rgb_check.c mandatory/map_file/rgb_check2.c \
-			mandatory/error.c mandatory/utils.c mandatory/free.c mandatory/exit_command.c \
+			mandatory/utils.c mandatory/free.c mandatory/exit_command.c \
 			mandatory/window/win_color.c mandatory/window/win_utils.c \
 			mandatory/test_map_validation/test.c mandatory/xpm_files.c \
 			mandatory/start/start.c mandatory/start/direction.c mandatory/start/draw.c \

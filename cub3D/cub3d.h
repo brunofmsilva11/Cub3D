@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:47:06 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/08 17:48:32 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/08 18:02:16 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,22 @@ typedef struct s_data
 /**************************************************************************************************************/
 
 
+/* - - - - - -[ERROR] - - - - - -*/
+
+//error.c
+void			finish_error(char *str, int i);
+void			file_name_error(t_data *d);
+void			error_rgb(char *line, t_data *d, char *str);
+void			error_in_elem(t_data *d, char *line);
+
+//error2.c
+void			error_dup_elem(t_data *d, char *line);
+void			no_tab_error_handle(t_data *d);
+
+
+/**************************************************************************************************************/
+
+
 /* - - - - - -[INIT] - - - - - -*/
 
 //init.c
@@ -237,15 +253,6 @@ void    		put_color_on_window2(t_data *d, int f_color, int c_color);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 /**************************************************************************************************************/
-
-
-/* - - - - - -[error.c] - - - - - -*/
-void			finish_error(char *str, int i);
-void			file_name_error(t_data *d);
-void			error_rgb(char *line, t_data *d, char *str);
-void			error_in_elem(t_data *d, char *line);
-void			error_dup_elem(t_data *d, char *line);
-void			no_tab_error_handle(t_data *d);
 
 /* - - - - - -[exit_command.c] - - - - - -*/
 int    			ft_exit_x(t_data *d);
