@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 17:18:27 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/08 17:26:39 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/09 18:03:20 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	ft_draw(t_data *d, int i)
 		if (i >= 0 && y >= 0 && d->tex_x >= 0 && d->tex_y >= 0)
 		{
 			color = ft_get_pixel(d, d->tex_x, d->tex_y);
+			//mlx_pixel_put(d->mlx_ptr, d->win_ptr, i, y, color);
 			my_mlx_pixel_put(d, i, y, color);
 		}
 		y++;

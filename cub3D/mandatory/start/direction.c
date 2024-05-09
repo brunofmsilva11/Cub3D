@@ -6,11 +6,13 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 16:08:07 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/08 16:18:21 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/09 17:09:07 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
+/*O 1 e -1 aumenta o zoom da imagem!
+O 0.66 e o tamanho */
 
 void	direction(t_data *d)
 {
