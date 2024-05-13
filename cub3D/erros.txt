@@ -1,0 +1,8 @@
+ver tabs nos six_args
+ver tambem o primerio espaco nos six_args
+Ver os tipo de erros
+valores acima e abaixo nas cores do C e F da leaks apenas da que e encontrada primeiro no ficheiro!.
+
+Se o mapa nao tiver jogador esta a abrir na mesma
+
+ 
