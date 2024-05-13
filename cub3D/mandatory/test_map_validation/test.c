@@ -244,7 +244,9 @@ void	process_map_line(t_data *d, char *line)
 		d->map_utils->map[i][j + 1] = '\0';
 	}
 	else
+	{
 		error_dup_elem(d, line);
+	}
 }
 
 void populate_map(t_data *d, int lines_read, char *file_name)
