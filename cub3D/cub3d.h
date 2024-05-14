@@ -236,6 +236,7 @@ void			rotate_player(t_data *d, int dir_flag);
 /*- - - - - - [TEST_MAP_VALIDATION] - - - - - -*/
 
 //test.c
+int				check_player_position(t_data *d, int i, int j, char a);
 void			read_map_lines2(t_data *d, char *line);
 void			map_validation_test(t_data *d, char *file_name);
 void			put_player_pos(t_data *d, int y, int x);

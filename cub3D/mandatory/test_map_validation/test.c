@@ -108,6 +108,8 @@ int check_value2(t_data *d, int i, int j)
 				d->map_utils->map[i][j] == 'E' || d->map_utils->map[i][j] == 'S')
 	{
 			d->map_utils->player_pos = d->map_utils->map[i][j];
+			if(!check_player_position(d, i, j, '0'))
+				return (0);
 			put_player_pos(d, i, j);
 			d->map_utils->skip_count++;
 			if(d->map_utils->skip_count > 1)
@@ -119,6 +121,23 @@ int check_value2(t_data *d, int i, int j)
 				return (0);
 	}
 	return (1);
+}
+
+int	check_player_position(t_data *d, int i, int j, char a)
+{
+	if (d->map_utils->map[i + 1][j])
+		if (d->map_utils->map[i + 1][j] == a)
+			return (1);
+	if (d->map_utils->map[i - 1][j])
+		if (d->map_utils->map[i - 1][j] == a)
+			return (1);
+	if (d->map_utils->map[i][j + 1])
+		if (d->map_utils->map[i][j + 1] == a)
+			return (1);
+	if (d->map_utils->map[i][j - 1])
+		if (d->map_utils->map[i][j - 1] == a)
+			return (1);
+	return (0);
 }
 
 void	put_player_pos(t_data *d, int y, int x)
