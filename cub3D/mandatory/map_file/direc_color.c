@@ -20,14 +20,14 @@ int	check_direc(t_data *d, char *line)
 	if (!ft_strncmp("NO ", line, 3))
 	{
 		if (d->map_utils->no)
-			error_dup_elem(d, line);
+			error_dup_elem(d, line, 11);
 		path_image(d, line, 1);
 		return (1);
 	}
 	else if (!ft_strncmp("SO ", line, 3))
 	{
 		if (d->map_utils->so)
-			error_dup_elem(d, line);
+			error_dup_elem(d, line, 11);
 		path_image(d, line, 2);
 		return (1);
 	}
@@ -43,14 +43,14 @@ int	check_direc2(t_data *d, char *line)
 	if (!ft_strncmp("WE ", line, 3))
 	{
 		if (d->map_utils->we)
-			error_dup_elem(d, line);
+			error_dup_elem(d, line, 11);
 		path_image(d, line, 3);
 		return (1);
 	}
 	else if (!ft_strncmp("EA ", line, 3))
 	{
 		if (d->map_utils->ea)
-			error_dup_elem(d, line);
+			error_dup_elem(d, line, 11);
 		path_image(d, line, 4);
 		return (1);
 	}
@@ -63,14 +63,14 @@ int	check_color(t_data *d, char *line)
     if (!ft_strncmp("F ", line, 2))
 	{
 		if (d->map_utils->f_color)
-			error_dup_elem(d, line);
+			error_dup_elem(d, line, 11);
 		put_rgb(d, line, 1);
 		return (1);
 	}
 	else if (!ft_strncmp("C ", line, 2))
 	{
 		if (d->map_utils->c_color)
-			error_dup_elem(d, line);
+			error_dup_elem(d, line, 11);
 		put_rgb(d, line, 2);
 		return (1);
 	}

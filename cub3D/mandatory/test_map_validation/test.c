@@ -103,22 +103,19 @@ int check_value2(t_data *d, int i, int j)
 			d->map_utils->map[i][j] != ' ' && d->map_utils->map[i][j] != '\n')
 		if(d->map_utils->map[i][j] != 'N' && d->map_utils->map[i][j] != 'W' &&
 				d->map_utils->map[i][j] != 'E' && d->map_utils->map[i][j] != 'S')
-			return (0);
+			return (d->error += 1);
 	if(d->map_utils->map[i][j] == 'N' || d->map_utils->map[i][j] == 'W' ||
 				d->map_utils->map[i][j] == 'E' || d->map_utils->map[i][j] == 'S')
 	{
 			d->map_utils->player_pos = d->map_utils->map[i][j];
 			if(!check_player_position(d, i, j, '0'))
-				return (0);
+				return (d->error += 2);
 			put_player_pos(d, i, j);
 			d->map_utils->skip_count++;
 			if(d->map_utils->skip_count > 1)
-			{
-				printf("Mais do que 1 jogador!\n");
-				return (0);
-			}
+				return (d->error -= 1);
 			if (!check_coord(d, i, j, ' '))
-				return (0);
+				return (d->error -= 1);
 	}
 	return (1);
 }
@@ -183,7 +180,7 @@ int is_map_closed(t_data *d)
 	while(d->map_utils->map[i][j])
 	{
 		if (!check_value2(d, i, j))
-			return (0);
+			return (d->error);
 		if (d->map_utils->map[i][j] == ' ' || d->map_utils->map[i][j] == '\n')
 			if(check_coord(d, i, j, '0') == 0)
 					return (0);
@@ -238,7 +235,7 @@ void read_map_lines(t_data *d, int *lines_read)
 			count++;
         }
 		else if (!ft_strcmp(line, "\n") && count > 0)
-			error_dup_elem(d, line);
+			error_dup_elem(d, line, 12);
         free(line);
     }
 }
@@ -255,14 +252,14 @@ void	read_map_lines2(t_data *d, char *line)
 		else
 			break;
 		if (line[i] == '\n')
-			error_dup_elem(d, line);
+			error_dup_elem(d, line, 13);
 	}
 	while(line[i] && line[i] != '\n')
 	{
 		if (check_value(line[i]))
 			i++;
 		else
-			error_dup_elem(d, line);
+			error_dup_elem(d, line, 13);
 	}
 }
 
@@ -294,7 +291,7 @@ void	process_map_line(t_data *d, char *line)
 	}
 	else
 	{
-		error_dup_elem(d, line);
+		error_dup_elem(d, line, 14);
 	}
 }
 
@@ -337,13 +334,11 @@ void	map_validation_test(t_data *d, char *file_name)
     skip_lines(d, i);
     read_map_lines(d, &lines_read);
     populate_map(d, lines_read, file_name);
-    if (is_map_closed(d))
+    if (is_map_closed(d) == 1)
         printf("Mapa FECHADO!\n");
     else
-	{
 		printf("Mapa invalido!\n");
-		d->error = 0;
-	}
+		//d->error = 0;
 	d->map_utils->map[lines_read] = NULL;
 	close(d->fd);
 }

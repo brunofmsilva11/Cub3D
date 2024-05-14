@@ -23,11 +23,11 @@ void	six_args(t_data *d, char *file_name)
 	{
 		line = get_next_line(d->fd);
 		if (!line)
-			error_dup_elem(d, line);
+			error_dup_elem(d, line, 1);
 		if (ft_strchr(" 1", line[0]))
-			error_dup_elem(d, line);
+			error_dup_elem(d, line, 1);
 		if (!check_direc(d, line) && line[0] != '\n')//Verifica se a string e valida ou se e '\n'(se for e valido)!
-			error_dup_elem(d, line);
+			error_dup_elem(d, line, 1);
 		free(line);
 		d->map_utils->skip_count++;
 	}

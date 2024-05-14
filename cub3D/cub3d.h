@@ -134,7 +134,7 @@ void			error_rgb(char *line, t_data *d, char *str);
 void			error_in_elem(t_data *d, char *line);
 
 //error2.c
-void			error_dup_elem(t_data *d, char *line);
+void			error_dup_elem(t_data *d, char *line, int n);
 void			no_tab_error_handle(t_data *d);
 
 
