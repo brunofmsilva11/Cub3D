@@ -8,4 +8,11 @@ Se o mapa nao tiver jogador esta a abrir na mesma
 
 Verificar na funçao read_map_lines as linhas antes de começar o mapa e depois dos six_args.
 
+Em principio resolvidos!
+
+--------------------------------------------------------------------------------------------
+
+Jogador sem caminho não deve funcionar
+
+
  
