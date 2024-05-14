@@ -199,21 +199,27 @@ void skip_lines(t_data *d, int count)
 void read_map_lines(t_data *d, int *lines_read)
 {
     char *line;
+	int count;
 
 	line = NULL;
+	count = 0;
     while (1)
 	{
         line = get_next_line(d->fd);
         if (!line)
             break;
-		read_map_lines2(d, line);
+		if (count == 0)
+			read_map_lines2(d, line);
         if (d->line_length < (int)ft_strlen(line))
             d->line_length = ft_strlen(line) - 1;
 		if (ft_strcmp(line, "\n"))
 		{
             printf("%s", line);
             (*lines_read)++;
+			count++;
         }
+		else if (!ft_strcmp(line, "\n") && count > 0)
+			error_dup_elem(d, line);
         free(line);
     }
 }

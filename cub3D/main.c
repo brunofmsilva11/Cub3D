@@ -26,13 +26,14 @@ int	main(int ac, char **av)
 	data->map_utils = malloc(sizeof(t_map));
 	ft_init_stack(data);//inicia as variaveis de data
 	ft_check_map_file(data, av[1]);//Verifica se o mapa e valido!
-	if (data->error)
+	if (data->error && data->map_utils->player_pos)
 	{
 		printf("%c(%f, %f)\n", data->map_utils->player_pos, data->p_x, data->p_y);
 		ft_start(data);//inicia o jogo
 		ft_free_data(data);
 	}
 	else
-		ft_free_data2(data);
+		error_dup_elem(data, NULL);
+	//ft_free_data2(data);
 	return (0);
 }

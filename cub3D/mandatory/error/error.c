@@ -28,7 +28,7 @@ void	file_name_error(t_data *d)
 void	error_rgb(char *line, t_data *d, char *str)
 {
 	(void)d;
-	ft_no_leak(d, line);
+	ft_no_leak2(d, line);
 	free(line);
 	ft_free_data2(d);
 	finish_error(str, 2);
