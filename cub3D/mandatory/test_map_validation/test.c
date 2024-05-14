@@ -206,15 +206,39 @@ void read_map_lines(t_data *d, int *lines_read)
         line = get_next_line(d->fd);
         if (!line)
             break;
+		read_map_lines2(d, line);
         if (d->line_length < (int)ft_strlen(line))
             d->line_length = ft_strlen(line) - 1;
-        if (ft_strcmp(line, "\n"))
+		if (ft_strcmp(line, "\n"))
 		{
             printf("%s", line);
             (*lines_read)++;
         }
         free(line);
     }
+}
+
+void	read_map_lines2(t_data *d, char *line)
+{
+	int i;
+
+	i = 0;
+	while(line[i] && line[i] != '\n')
+	{
+		if (line[i] == ' ')
+			i++;
+		else
+			break;
+		if (line[i] == '\n')
+			error_dup_elem(d, line);
+	}
+	while(line[i] && line[i] != '\n')
+	{
+		if (check_value(line[i]))
+			i++;
+		else
+			error_dup_elem(d, line);
+	}
 }
 
 void	process_map_line(t_data *d, char *line)
