@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 11:18:15 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/08 16:47:14 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/15 16:37:36 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,10 +137,10 @@ int	check_player_position(t_data *d, int i, int j, char a)
 	return (0);
 }
 
-void	put_player_pos(t_data *d, int y, int x)
+void	put_player_pos(t_data *d, int x, int y)
 {
-	d->p_y = y + 0.5;
 	d->p_x = x + 0.5;
+	d->p_y = y + 0.5;
 }
 
 int check_first_last(t_data *d)

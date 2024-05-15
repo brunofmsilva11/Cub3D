@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 16:21:10 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/09 18:04:52 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:44:41 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,7 +205,7 @@ void	draw_raycast(t_data *d)
 		ft_draw(d, d->i);
 		d->i++;
 	}
-	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->img, 0, 0);
+	//mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->img, 0, 0);
 }
 
 void	ft_start(t_data *d)
