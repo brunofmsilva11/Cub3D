@@ -72,18 +72,20 @@ int	handle_input(int keysym, t_dir *dir)
 void draw_square(t_dir *d, int x, int y, int size, int color)
 {
     int i, j;
-    int *image_buffer = (int *)malloc(size * size * sizeof(int));
+    i = x;
+    j = y;
+    //int *image_buffer = (int *)malloc(size * size * sizeof(int));
 
     // Fill the image buffer with pixel colors
     int index = 0;
-    for (i = x; i < x + size; i++)
+    /* for (i = x; i < x + size; i++)
     {
         for (j = y; j < y + size; j++)
         {
             image_buffer[index] = color;
             index++;
         }
-    }
+    } */
 
     // Create a new image in memory
     void *img_ptr = mlx_new_image(d->mlx_ptr, size, size);
@@ -92,19 +94,31 @@ void draw_square(t_dir *d, int x, int y, int size, int color)
     int endian;
     int *img_data = (int *)mlx_get_data_addr(img_ptr, &bits_per_pixel, &size_line, &endian);
 
+    while(i < x + size)
+    {
+        j = y;
+        while(j < y + size)
+        {
+            img_data[index] = color;
+            index++;
+            j++;
+        }
+        i++;
+    }
+
     // Copy the pixel data from the image buffer to the image
-    for (index = 0; index < size * size; index++)
+    /* for (index = 0; index < size * size; index++)
     {
         img_data[index] = image_buffer[index];
-    }
+    } */
 
     // Display the image on the window
     mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, img_ptr, x, y);
-    mlx_destroy_image(d->mlx_ptr, img_ptr); // Clean up the image
+    //mlx_destroy_image(d->mlx_ptr, img_ptr); // Clean up the image
 
-    mlx_do_sync(d->mlx_ptr); // Ensure all changes are applied before displaying
+    //mlx_do_sync(d->mlx_ptr); // Ensure all changes are applied before displaying
 
-    free(image_buffer);
+    //free(image_buffer);
 }
 
 
