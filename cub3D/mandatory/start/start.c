@@ -205,7 +205,7 @@ void	draw_raycast(t_data *d)
 		ft_draw(d, d->i);
 		d->i++;
 	}
-	//mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->img, 0, 0);
+	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->img, 0, 0);
 }
 
 void	ft_start(t_data *d)

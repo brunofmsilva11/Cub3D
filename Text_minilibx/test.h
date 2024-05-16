@@ -23,7 +23,44 @@
 # define TEX_HEIGHT 64
 # define FOV 1.0472 // 60 graus em radianos
 
-void    draw_square(void *mlx_ptr, void *win_ptr, int x, int y, int size, int color);
 
+typedef struct s_ray
+{
+    double ray_angle;
+    double distance_to_wall;
+} t_ray;
+
+typedef struct s_image
+{
+    void *img;
+    char *addr;
+    int line_length;
+    int bpp;
+} t_image;
+
+typedef struct s_dir
+{
+    void *mlx_ptr;
+    void *win_ptr;
+    int fd;
+    int width;
+    int height;
+    int key_press_up;
+    int key_press_left;
+    int key_press_down;
+    int key_press_right;
+    int key_press_r_left;
+    int key_press_r_right;
+} t_dir;
+
+typedef struct s_player
+{
+    double x;
+    double y;
+    //double angle;
+} t_player;
+
+void    draw_square(t_dir *d, int x, int y, int size, int color);
+void	my_mlx_pixel_put(t_dir *data, int x, int y, int color);
 
 #endif

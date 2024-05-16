@@ -1,78 +1,5 @@
 #include "test.h"
 
-typedef struct s_ray
-{
-    double ray_angle;
-    double distance_to_wall;
-} t_ray;
-
-typedef struct s_dir
-{
-    void *mlx_ptr;
-    void *win_ptr;
-    int width;
-    int height;
-    int key_press_up;
-    int key_press_left;
-    int key_press_down;
-    int key_press_right;
-    int key_press_r_left;
-    int key_press_r_right;
-} t_dir;
-
-typedef struct s_player
-{
-    double x;
-    double y;
-    //double angle;
-} t_player;
-
-void draw_rectangle(void *mlx_ptr, void *win_ptr, int x, int y, int width, int height, int color)
-{
-    int i;
-    int j;
-
-    i = x;
-    while (i < x + width)
-    {
-        j = y;
-        while (j < y + height)
-        {
-            mlx_pixel_put(mlx_ptr, win_ptr, i, j, color);
-            j++;
-        }
-        i++;
-    }
-}
-
-void cast_ray(t_ray *ray, t_player player)
-{
-    (void)player;
-    // Simplesmente definindo uma distância fixa para a parede
-    ray->distance_to_wall = 200.0;
-}
-
-void draw_walls(void *mlx_ptr, void *win_ptr, t_player player)
-{
-    t_ray ray;
-    int wall_height;
-
-    for (int x = 0; x < WIDTH; x++)
-    {
-        // Calcular o ângulo do raio para esta coluna
-        //double ray_angle = player.angle - atan2(x - WIDTH / 2, WIDTH / 2 / tan(FOV / 2));
-
-        // Lançar o raio e calcular a distância até a parede
-        cast_ray(&ray, player);
-
-        // Calcular a altura da parede
-        wall_height = (int)(HEIGHT / ray.distance_to_wall);
-
-        // Desenhar a parede
-        draw_rectangle(mlx_ptr, win_ptr, x, HEIGHT / 2 - wall_height / 2, 1, wall_height, 0xFFFFFF);
-    }
-}
-
 t_dir *ft_init()
 {
     t_dir *dir;
@@ -80,6 +7,7 @@ t_dir *ft_init()
     dir = malloc(sizeof(t_dir));
     dir->width = 20;
     dir->height = 20;
+    dir->fd = 0;
     dir->key_press_up = 0;
     dir->key_press_left = 0;
     dir->key_press_down = 0;
@@ -98,25 +26,25 @@ void    game(t_dir *dir)
     if(dir->key_press_up && dir->height > 0)
     {
         mlx_clear_window(dir->mlx_ptr, dir->win_ptr);
-        draw_square(dir->mlx_ptr, dir->win_ptr, dir->width, dir->height -= 20, 20, 0xFFFFFF);
+        draw_square(dir, dir->width, dir->height -= 20, 20, 0xFFFFFF);
         dir->key_press_up = 0;
     }
     if(dir->key_press_down && dir->height < 820)
     {
         mlx_clear_window(dir->mlx_ptr, dir->win_ptr);
-        draw_square(dir->mlx_ptr, dir->win_ptr, dir->width, dir->height += 20, 20, 0xFFFFFF);
+        draw_square(dir, dir->width, dir->height += 20, 20, 0xFFFFFF);
         dir->key_press_down = 0;
     }
     if(dir->key_press_left && dir->width > 0)
     {
         mlx_clear_window(dir->mlx_ptr, dir->win_ptr);
-        draw_square(dir->mlx_ptr, dir->win_ptr, dir->width -= 20, dir->height, 20, 0xFFFFFF);
+        draw_square(dir, dir->width -= 20, dir->height, 20, 0xFFFFFF);
         dir->key_press_left = 0;
     }
     if(dir->key_press_right && dir->width < 1900)
     {
         mlx_clear_window(dir->mlx_ptr, dir->win_ptr);
-        draw_square(dir->mlx_ptr, dir->win_ptr, dir->width += 20, dir->height, 20, 0xFFFFFF);
+        draw_square(dir, dir->width += 20, dir->height, 20, 0xFFFFFF);
         dir->key_press_right = 0;
     }
 }
@@ -141,7 +69,48 @@ int	handle_input(int keysym, t_dir *dir)
 	return (0);
 }
 
-void    draw_square(void *mlx_ptr, void *win_ptr, int x, int y, int size, int color)
+void draw_square(t_dir *d, int x, int y, int size, int color)
+{
+    int i, j;
+    int *image_buffer = (int *)malloc(size * size * sizeof(int));
+
+    // Fill the image buffer with pixel colors
+    int index = 0;
+    for (i = x; i < x + size; i++)
+    {
+        for (j = y; j < y + size; j++)
+        {
+            image_buffer[index] = color;
+            index++;
+        }
+    }
+
+    // Create a new image in memory
+    void *img_ptr = mlx_new_image(d->mlx_ptr, size, size);
+    int bits_per_pixel;
+    int size_line;
+    int endian;
+    int *img_data = (int *)mlx_get_data_addr(img_ptr, &bits_per_pixel, &size_line, &endian);
+
+    // Copy the pixel data from the image buffer to the image
+    for (index = 0; index < size * size; index++)
+    {
+        img_data[index] = image_buffer[index];
+    }
+
+    // Display the image on the window
+    mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, img_ptr, x, y);
+    mlx_destroy_image(d->mlx_ptr, img_ptr); // Clean up the image
+
+    mlx_do_sync(d->mlx_ptr); // Ensure all changes are applied before displaying
+
+    free(image_buffer);
+}
+
+
+
+
+/* void    draw_square(t_dir *d, int x, int y, int size, int color)
 {
     int i;
     int j;
@@ -152,30 +121,64 @@ void    draw_square(void *mlx_ptr, void *win_ptr, int x, int y, int size, int co
         j = y;
         while (j < y + size)
         {
-            mlx_pixel_put(mlx_ptr, win_ptr, i, j, color);
+            mlx_pixel_put(d->mlx_ptr, d->win_ptr, i, j, color);
+            //my_mlx_pixel_put(d, x, y, color);
             j++;
         }
         i++;
     }
+} */
+
+void    draw_map(t_dir *d, char *file_name, int size, int color)
+{
+    int i;
+    char *line;
+    int x;
+    int y;
+
+    i = 0;
+    x = 0;
+    y = 0;
+    d->fd = open(file_name, O_RDONLY);
+    line = get_next_line(d->fd);
+    while(line)
+    {
+        i = 0;
+        x = 0;
+        while(line[i])
+        {
+            if(line[i] == '1')
+            {
+                draw_square(d, x, y, size, color);
+                x += 100;
+            }
+            else if(line[i] == '0')
+                x += 100;
+            else if(line[i] == '\n')
+                y += 100;
+            else
+            {
+                draw_square(d, x, y, size, 0xFF9200);
+                x += 100;
+            }
+            i++;
+        }
+        free(line);
+        line = get_next_line(d->fd);
+    }
+    close(d->fd);
 }
 
-int main(void)
+int main(int ac, char **av)
 {
     t_dir *dir;
 
-    //dir = malloc(sizeof(t_dir));
+    (void)ac;
     dir = ft_init();
     dir->mlx_ptr = mlx_init();
     dir->win_ptr = mlx_new_window(dir->mlx_ptr, WIDTH, HEIGHT, "Raycasting Demo");
-    draw_square(dir->mlx_ptr, dir->win_ptr, dir->width, dir->height, 20, 0xFFFFFF);
-    // Posição inicial do jogador e ângulo de visão
-    /* player.x = WIDTH / 2;
-    player.y = HEIGHT / 2; */
-    //player.angle = 0;
-
-    // Desenhar as paredes
-    //draw_walls(mlx_ptr, win_ptr, player);
-
+    draw_map(dir, av[1], 100, 0x1515D6);
+    //draw_square(dir->mlx_ptr, dir->win_ptr, dir->width, dir->height, 20, 0xFFFFFF);
     mlx_hook(dir->win_ptr, KeyPress, KeyPressMask, handle_input, dir);
     mlx_hook(dir->win_ptr, DestroyNotify, ButtonPressMask, ft_exit_x, dir->mlx_ptr);
     mlx_loop(dir->mlx_ptr);

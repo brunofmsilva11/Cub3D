@@ -56,8 +56,8 @@ void	ft_draw(t_data *d, int i)
 		if (i >= 0 && y >= 0 && d->tex_x >= 0 && d->tex_y >= 0)
 		{
 			color = ft_get_pixel(d, d->tex_x, d->tex_y);
-			mlx_pixel_put(d->mlx_ptr, d->win_ptr, i, y, color);
-			//my_mlx_pixel_put(d, i, y, color);
+			//mlx_pixel_put(d->mlx_ptr, d->win_ptr, i, y, color);
+			my_mlx_pixel_put(d, i, y, color);
 		}
 		y++;
 	}
