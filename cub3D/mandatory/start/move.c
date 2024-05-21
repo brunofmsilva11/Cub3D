@@ -3,28 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bruno <bruno@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 17:24:57 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/15 15:13:24 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/20 16:47:05 by bruno            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-/*A função game_loop é o coração do ciclo de jogo. Aqui está uma explicação linha por linha:
+/*A função game_loop é o coração do ciclo de jogo. Aqui está 
+uma explicação linha por linha:
 
-    if (!ft_movs(d)) return (0);: Verifica se o jogador realizou algum movimento. A função ft_movs provavelmente verifica a entrada do jogador e atualiza a posição ou o estado do jogo conforme necessário. Se nenhum movimento for feito ou o jogo encerrar, a função retorna 0, indicando que o ciclo de jogo deve ser interrompido.
+    if (!ft_movs(d)) return (0);: Verifica se o jogador realizou 
+	algum movimento. A função ft_movs provavelmente verifica a 
+	entrada do jogador e atualiza a posição ou o estado do jogo 
+	conforme necessário. Se nenhum movimento for feito ou o jogo 
+	encerrar, a função retorna 0, indicando que o ciclo de jogo 
+	deve ser interrompido.
 
-    mlx_destroy_image(d->mlx_ptr, d->img->img);: Destroi a imagem anteriormente criada no ciclo de jogo anterior. Isso é feito para evitar vazamentos de memória e garantir que a nova imagem seja criada corretamente.
+    mlx_destroy_image(d->mlx_ptr, d->img->img);: Destroi a imagem 
+	anteriormente criada no ciclo de jogo anterior. Isso é feito 
+	para evitar vazamentos de memória e garantir que a nova imagem 
+	seja criada corretamente.
 
-    d->img->img = mlx_new_image(d->mlx_ptr, WIDTH, HEIGHT);: Cria uma nova imagem usando a função mlx_new_image fornecida pela biblioteca gráfica (presumivelmente, a biblioteca MLX). Esta imagem será usada para renderizar a cena atualizada.
+    d->img->img = mlx_new_image(d->mlx_ptr, WIDTH, HEIGHT);: Cria 
+	uma nova imagem usando a função mlx_new_image fornecida pela 
+	biblioteca gráfica (presumivelmente, a biblioteca MLX). 
+	Esta imagem será usada para renderizar a cena atualizada.
 
-    draw_raycast(d);: Chama a função draw_raycast, que é responsável por renderizar a cena usando a técnica de raycasting. Esta função desenha a cena atualizada na nova imagem criada.
+    draw_raycast(d);: Chama a função draw_raycast, que é responsável 
+	por renderizar a cena usando a técnica de raycasting. Esta função 
+	desenha a cena atualizada na nova imagem criada.
 
-    return (0);: Retorna 0 para indicar que o ciclo de jogo foi executado com sucesso.
+    return (0);: Retorna 0 para indicar que o ciclo de jogo foi 
+	executado com sucesso.
 
-Essa função constitui um ciclo básico de jogo, onde o estado do jogo é atualizado, a cena é renderizada e o processo é repetido continuamente até que o jogo termine ou o jogador decida sair.*/
+Essa função constitui um ciclo básico de jogo, onde o estado do 
+jogo é atualizado, a cena é renderizada e o processo é repetido 
+continuamente até que o jogo termine ou o jogador decida sair.*/
 int	game_loop(t_data *d)
 {
 	if (!ft_movs(d))

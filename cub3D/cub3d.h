@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bruno <bruno@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:47:06 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/08 18:02:16 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/20 20:47:29 by bruno            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,13 +205,15 @@ char			*remove_tabs(char *str);
 
 /*- - - - - - [START] - - - - - -*/
 //start.c
-void			get_texture_val(t_data *d);
-void			ray_values(t_data *d);
 void			get_hit(t_data *d);
 void			check_side(t_data *d);
 void			ray_calc(t_data *d);
 void			draw_raycast(t_data *d);
 void			ft_start(t_data *d);
+
+//start2.c
+void			get_texture_val(t_data *d);
+void			ray_values(t_data *d);
 
 //direction.c
 void			direction(t_data *d);
@@ -241,6 +243,24 @@ void			read_map_lines2(t_data *d, char *line);
 void			map_validation_test(t_data *d, char *file_name);
 void			put_player_pos(t_data *d, int y, int x);
 
+//test2.c
+int 			check_char(char *str);
+int 			check_enter(char *str);
+int				check_for_spaces2(char *str);
+int 			check_coord(t_data *d, int i, int j, char a);
+int 			check_value2(t_data *d, int i, int j);
+
+//test3.c
+void 			obtain_row(t_data *d, int *rows, int *col);
+int 			check_value(char a);
+int				check_player_position(t_data *d, int i, int j, char a);
+void			put_player_pos(t_data *d, int y, int x);
+int 			check_first_last(t_data *d);
+
+//test4.c
+int 			is_map_closed(t_data *d);
+void 			skip_lines(t_data *d, int count);
+
 
 /**************************************************************************************************************/
 
@@ -267,8 +287,11 @@ void			ft_free_data2(t_data *d);
 void			ft_free_data3(t_data *d);
 void			ft_no_leak(t_data *d, char *line);
 void			ft_no_leak2(t_data *d, char *line);
+
+/* - - - - - -[free2.c] - - - - - -*/
 int				ft_no_leak3(t_data *d, char *line);
 void			free_imgs(t_data *d);
+
 /* - - - - - -[rgb_check.c] - - - - - -*/
 void			put_rgb(t_data *d, char *line, int flag);
 int				ft_check_next_comma(char *line);

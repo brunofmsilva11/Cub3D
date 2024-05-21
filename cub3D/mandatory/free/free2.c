@@ -1,32 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rgb_check2.c                                       :+:      :+:    :+:   */
+/*   free2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bruno <bruno@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 16:00:32 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/20 16:26:04 by bruno            ###   ########.fr       */
+/*   Created: 2024/05/20 15:21:13 by bruno             #+#    #+#             */
+/*   Updated: 2024/05/20 15:25:18 by bruno            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-char	*remove_tabs(char *str)
+int	ft_no_leak3(t_data *d, char *line)
 {
-	int		i;
-	int		j;
-	char	*dup;
+	int	i;
 
 	i = 0;
-	j = 0;
-	while (str[i])
+	while (1)
 	{
-		if (str[i] == '\t' || str[i] == ' ')
-			j++;
-		i++;
+		if (line)
+		{
+			while (line)
+			{
+				free(line);
+				line = get_next_line(d->fd);
+			}
+			return (0);
+		}
+		else
+			break ;
 	}
-	dup = ft_strdup(str + j);
-	free(str);
-	return (dup);
+	close(d->fd);
+	if (i == 0)
+		return (1);
+	return (0);
+}
+
+void	free_imgs(t_data *d)
+{
+	if (d->img)
+		free(d->img);
+	if (d->n_img)
+		free(d->n_img);
+	if (d->s_img)
+		free(d->s_img);
+	if (d->w_img)
+		free(d->w_img);
+	if (d->e_img)
+		free(d->e_img);
 }

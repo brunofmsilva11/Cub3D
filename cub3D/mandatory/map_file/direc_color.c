@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   direc_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bruno <bruno@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:01:30 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/04/12 12:14:35 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/20 16:15:27 by bruno            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	check_direc2(t_data *d, char *line)
 int	check_color(t_data *d, char *line)
 {
 	(void)d;
-    if (!ft_strncmp("F ", line, 2))
+	if (!ft_strncmp("F ", line, 2))
 	{
 		if (d->map_utils->f_color)
 			error_dup_elem(d, line, 11);

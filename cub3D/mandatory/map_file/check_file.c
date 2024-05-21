@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   check_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bruno <bruno@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:57:34 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/08 15:27:34 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/20 16:09:59 by bruno            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-//Verifica se existem os 6 elementos para criar o mapa, o caminho das respetivas imagens e as cores!
+/*Verifica se existem os 6 elementos para criar o mapa, o 
+caminho das respetivas imagens e as cores!*/
 void	six_args(t_data *d, char *file_name)
 {
 	char	*line;
@@ -35,7 +36,6 @@ void	six_args(t_data *d, char *file_name)
 	ft_no_leak(d, line);//Verifica o resto do mapa.
 	ft_check_textures(d);
 	map_validation_test(d, file_name);//verifica o mapa depois de verificar os primeiros 6 elementos!
-	//map_to_file(d, file_name);
 }
 
 void	check_null_file(t_data *d, char *file_name)

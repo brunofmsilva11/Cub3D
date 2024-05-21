@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bruno <bruno@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:01:38 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/08 15:40:28 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/20 15:24:13 by bruno            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../cub3d.h"
 
 void	ft_free_data(t_data *d)
 {
@@ -34,12 +34,13 @@ void	ft_free_data(t_data *d)
 		free(d->map_utils->we);
 	ft_free_data3(d);
 	free(d->map_utils);
-    if (d->win_ptr)
+	if (d->win_ptr)
 		mlx_destroy_window(d->mlx_ptr, d->win_ptr);
-    mlx_destroy_display(d->mlx_ptr);
-    free(d->mlx_ptr);
+	mlx_destroy_display(d->mlx_ptr);
+	free(d->mlx_ptr);
 	free(d);
 }
+
 /*free quando da erro antes de iniciar a janela do jogo 
 ou seja, antes de entrar na funcao ft_start*/
 void	ft_free_data2(t_data *d)
@@ -66,6 +67,7 @@ void	ft_free_data2(t_data *d)
 		free(d->map_utils);
 	free(d);
 }
+
 /*Acrescentei esta funcao para dar free as estruturas de 
 cada imagem e a propria imagem isto so acontece depois
 do mapa ser valido*/
@@ -100,7 +102,9 @@ void	ft_no_leak(t_data *d, char *line)
 	close(d->fd);
 }
 
-void	ft_no_leak2(t_data *d, char *line)//esta funcao serve para quando esta a verificar se o ficheiro e NULL as variaveis nao assumirem logo o valor!
+/*esta funcao serve para quando esta a verificar se o 
+ficheiro e NULL as variaveis nao assumirem logo o valor!*/
+void	ft_no_leak2(t_data *d, char *line)
 {
 	while (1)
 	{
@@ -110,43 +114,4 @@ void	ft_no_leak2(t_data *d, char *line)//esta funcao serve para quando esta a ve
 		free(line);
 	}
 	close(d->fd);
-}
-
-int	ft_no_leak3(t_data *d, char *line)
-{
-	int	i;
-
-	i = 0;
-	while (1)
-	{
-		if (line)
-		{
-			while (line)
-			{
-				free(line);
-				line = get_next_line(d->fd);
-			}
-			return (0);
-		}
-		else
-			break ;
-	}
-	close(d->fd);
-	if (i == 0)
-		return (1);
-	return (0);
-}
-
-void	free_imgs(t_data *d)
-{
-	if (d->img)
-        free(d->img);
-    if (d->n_img)
-        free(d->n_img);
-    if (d->s_img)
-        free(d->s_img);
-    if (d->w_img)
-        free(d->w_img);
-    if (d->e_img)
-        free(d->e_img);
 }

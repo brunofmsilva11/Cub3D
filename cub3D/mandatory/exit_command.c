@@ -12,11 +12,11 @@
 
 #include "../cub3d.h"
 
-int    ft_exit_x(t_data *d)
+int	ft_exit_x(t_data *d)
 {
-    if (d != NULL && d->mlx_ptr != NULL && d->win_ptr != NULL)
-        ft_free_data(d);
-    exit(0);
+	if (d != NULL && d->mlx_ptr != NULL && d->win_ptr != NULL)
+		ft_free_data(d);
+	exit(0);
 }
 
 int	release_key(int keysym, t_data *d)
