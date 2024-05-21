@@ -5,8 +5,8 @@ t_dir *ft_init()
     t_dir *dir;
 
     dir = malloc(sizeof(t_dir));
-    dir->width = 20;
-    dir->height = 20;
+    dir->width = 100;
+    dir->height = 100;
     dir->fd = 0;
     dir->key_press_up = 0;
     dir->key_press_left = 0;
@@ -14,6 +14,11 @@ t_dir *ft_init()
     dir->key_press_right = 0;
     dir->key_press_r_left = 0;
     dir->key_press_r_right = 0;
+    dir->file_name = 0;
+    dir->size = 100;
+    dir->p_color = 0xFF9200;
+    dir->w_color = 0x1515D6;
+
     return (dir);
 }
 
@@ -25,26 +30,26 @@ void    game(t_dir *dir)
 {
     if(dir->key_press_up && dir->height > 0)
     {
-        mlx_clear_window(dir->mlx_ptr, dir->win_ptr);
-        draw_square(dir, dir->width, dir->height -= 20, 20, 0xFFFFFF);
+        //mlx_clear_window(dir->mlx_ptr, dir->win_ptr);
+        draw_arrow_N(dir);
         dir->key_press_up = 0;
     }
     if(dir->key_press_down && dir->height < 820)
     {
-        mlx_clear_window(dir->mlx_ptr, dir->win_ptr);
-        draw_square(dir, dir->width, dir->height += 20, 20, 0xFFFFFF);
+        //mlx_clear_window(dir->mlx_ptr, dir->win_ptr);
+        draw_arrow_S(dir);
         dir->key_press_down = 0;
     }
     if(dir->key_press_left && dir->width > 0)
     {
-        mlx_clear_window(dir->mlx_ptr, dir->win_ptr);
-        draw_square(dir, dir->width -= 20, dir->height, 20, 0xFFFFFF);
+        //mlx_clear_window(dir->mlx_ptr, dir->win_ptr);
+        draw_arrow_W(dir);
         dir->key_press_left = 0;
     }
     if(dir->key_press_right && dir->width < 1900)
     {
-        mlx_clear_window(dir->mlx_ptr, dir->win_ptr);
-        draw_square(dir, dir->width += 20, dir->height, 20, 0xFFFFFF);
+        //mlx_clear_window(dir->mlx_ptr, dir->win_ptr);
+        draw_arrow_E(dir);
         dir->key_press_right = 0;
     }
 }
@@ -69,11 +74,11 @@ int	handle_input(int keysym, t_dir *dir)
 	return (0);
 }
 
-void draw_square(t_dir *d, int x, int y, int size, int color)
+void draw_square(t_dir *d)
 {
     int i, j;
-    i = x;
-    j = y;
+    i = d->width;
+    j = d->height;
     //int *image_buffer = (int *)malloc(size * size * sizeof(int));
 
     // Fill the image buffer with pixel colors
@@ -88,18 +93,18 @@ void draw_square(t_dir *d, int x, int y, int size, int color)
     } */
 
     // Create a new image in memory
-    void *img_ptr = mlx_new_image(d->mlx_ptr, size, size);
+    void *img_ptr = mlx_new_image(d->mlx_ptr, d->size, d->size);
     int bits_per_pixel;
     int size_line;
     int endian;
     int *img_data = (int *)mlx_get_data_addr(img_ptr, &bits_per_pixel, &size_line, &endian);
 
-    while(i < x + size)
+    while(i < d->width + d->size)
     {
-        j = y;
-        while(j < y + size)
+        j = d->height;
+        while(j < d->height + d->size)
         {
-            img_data[index] = color;
+            img_data[index] = d->w_color;
             index++;
             j++;
         }
@@ -113,7 +118,7 @@ void draw_square(t_dir *d, int x, int y, int size, int color)
     } */
 
     // Display the image on the window
-    mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, img_ptr, x, y);
+    mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, img_ptr, d->width, d->height);
     //mlx_destroy_image(d->mlx_ptr, img_ptr); // Clean up the image
 
     //mlx_do_sync(d->mlx_ptr); // Ensure all changes are applied before displaying
@@ -143,37 +148,53 @@ void draw_square(t_dir *d, int x, int y, int size, int color)
     }
 } */
 
-void    draw_map(t_dir *d, char *file_name, int size, int color)
+void    draw_map(t_dir *d)
 {
     int i;
     char *line;
-    int x;
-    int y;
 
     i = 0;
-    x = 0;
-    y = 0;
-    d->fd = open(file_name, O_RDONLY);
+    d->fd = open(d->file_name, O_RDONLY);
     line = get_next_line(d->fd);
     while(line)
     {
         i = 0;
-        x = 0;
+        d->width = 0;
         while(line[i])
         {
             if(line[i] == '1')
             {
-                draw_square(d, x, y, size, color);
-                x += 100;
+                draw_square(d);
+                d->width += 100;
             }
             else if(line[i] == '0')
-                x += 100;
+                d->width += 100;
             else if(line[i] == '\n')
-                y += 100;
+                d->height += 100;
             else
             {
-                draw_square(d, x, y, size, 0xFF9200);
-                x += 100;
+                d->p_x = d->width;
+                d->p_y = d->height;
+                if(line[i] == 'N')
+                {
+                    draw_arrow_N(d);
+                    d->width += 100;
+                }
+                else if(line[i] == 'S')
+                {
+                    draw_arrow_S(d);
+                    d->width += 100;
+                }
+                else if(line[i] == 'E')
+                {
+                    draw_arrow_E(d);
+                    d->width += 100;
+                }
+                else if(line[i] == 'W')
+                {
+                    draw_arrow_W(d);
+                    d->width += 100;
+                }
             }
             i++;
         }
@@ -190,8 +211,9 @@ int main(int ac, char **av)
     (void)ac;
     dir = ft_init();
     dir->mlx_ptr = mlx_init();
+    dir->file_name = ft_strdup(av[1]);
     dir->win_ptr = mlx_new_window(dir->mlx_ptr, WIDTH, HEIGHT, "Raycasting Demo");
-    draw_map(dir, av[1], 100, 0x1515D6);
+    draw_map(dir);
     //draw_square(dir->mlx_ptr, dir->win_ptr, dir->width, dir->height, 20, 0xFFFFFF);
     mlx_hook(dir->win_ptr, KeyPress, KeyPressMask, handle_input, dir);
     mlx_hook(dir->win_ptr, DestroyNotify, ButtonPressMask, ft_exit_x, dir->mlx_ptr);

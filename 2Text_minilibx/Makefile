@@ -6,7 +6,7 @@
 #    By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/09 11:46:40 by bmota-si          #+#    #+#              #
-#    Updated: 2024/05/21 17:14:49 by bmota-si         ###   ########.fr        #
+#    Updated: 2024/05/08 18:06:35 by bmota-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ RM = rm -rf
 LIBFT = ./libft/libft.a
 MINILIBX = ./minilibx-linux/libmlx.a
 
-SRCS = 	./main.c ./draw_arrow.c \
+SRCS = 	./main.c \
 
 OBJS = $(SRCS:%.c=%.o)
 

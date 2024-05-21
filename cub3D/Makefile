@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bruno <bruno@student.42.fr>                +#+  +:+       +#+         #
+#    By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/09 11:46:40 by bmota-si          #+#    #+#              #
-#    Updated: 2024/05/20 20:43:55 by bruno            ###   ########.fr        #
+#    Updated: 2024/05/21 16:27:30 by bmota-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LIBFT = ./libft/libft.a
 MINILIBX = ./minilibx-linux/libmlx.a
 
 SRCS = 	./main.c mandatory/error/error.c mandatory/error/error2.c \
-			mandatory/free.c mandatory/free2.c \
+			mandatory/free/free.c mandatory/free/free2.c \
 			mandatory/init/init.c mandatory/init/init2.c \
 			mandatory/map_file/check_file.c \
 			mandatory/map_file/check_textures.c \

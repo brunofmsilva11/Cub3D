@@ -51,6 +51,12 @@ typedef struct s_dir
     int key_press_right;
     int key_press_r_left;
     int key_press_r_right;
+    char *file_name;
+    int size;
+    int p_color;
+    int w_color;
+    int p_x;
+    int p_y;
 } t_dir;
 
 typedef struct s_player
@@ -60,7 +66,12 @@ typedef struct s_player
     //double angle;
 } t_player;
 
-void    draw_square(t_dir *d, int x, int y, int size, int color);
+void    draw_arrow_N(t_dir *data);
+void    draw_arrow_S(t_dir *data);
+void    draw_arrow_E(t_dir *data);
+void    draw_arrow_W(t_dir *data);
+
+void    draw_square(t_dir *d);
 void	my_mlx_pixel_put(t_dir *data, int x, int y, int color);
 
 #endif
