@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruno <bruno@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:47:06 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/20 20:47:29 by bruno            ###   ########.fr       */
+/*   Updated: 2024/05/22 13:17:49 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ void			error_in_elem(t_data *d, char *line);
 //error2.c
 void			error_dup_elem(t_data *d, char *line, int n);
 void			no_tab_error_handle(t_data *d);
+void			error_textures(t_data *d, char *str);
 
 
 /**************************************************************************************************************/
@@ -291,6 +292,8 @@ void			ft_no_leak2(t_data *d, char *line);
 /* - - - - - -[free2.c] - - - - - -*/
 int				ft_no_leak3(t_data *d, char *line);
 void			free_imgs(t_data *d);
+void			ft_free_data4(t_data *d);
+void			ft_free_data5(t_data *d);
 
 /* - - - - - -[rgb_check.c] - - - - - -*/
 void			put_rgb(t_data *d, char *line, int flag);

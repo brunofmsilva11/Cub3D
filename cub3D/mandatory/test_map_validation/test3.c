@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   test3.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruno <bruno@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 20:35:56 by bruno             #+#    #+#             */
-/*   Updated: 2024/05/20 20:36:30 by bruno            ###   ########.fr       */
+/*   Updated: 2024/05/22 13:28:39 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
-
-void obtain_row(t_data *d, int *rows, int *col)
+//nao esta a ser usado
+/* void obtain_row(t_data *d, int *rows, int *col)
 {
 	int i;
 	int j;
@@ -40,7 +40,7 @@ void obtain_row(t_data *d, int *rows, int *col)
 		}
 	}
 	*rows = i;
-}
+} */
 
 int check_value(char a)
 {

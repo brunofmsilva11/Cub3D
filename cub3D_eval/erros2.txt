@@ -1,0 +1,17 @@
+Ver enter dentro do mapa, mas se for espacos numa linha vazia aceita.
+
+
+                  1
+1111111111111111110111111111111111111111
+11111100000000000000E0000111111000111111
+111111111111110000000000000000000000011111111111
+1111111111111111111111111111111111111111111111111111111111111
+da leaks
+
+mensagem de erro quando ha tab no mapa
+
+
+mapa aberto faz o erro mas corre o jogo - corrigido, falta corrigir mensagem de erro
+
+
+

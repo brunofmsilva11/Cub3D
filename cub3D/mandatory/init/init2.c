@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruno <bruno@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 14:48:00 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/20 15:26:38 by bruno            ###   ########.fr       */
+/*   Updated: 2024/05/22 13:14:56 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	init_struct_imgs(t_data *d)
 	d->s_img = ft_calloc(1, sizeof(t_image));
 	d->w_img = ft_calloc(1, sizeof(t_image));
 	d->e_img = ft_calloc(1, sizeof(t_image));
-	/* if (!check_access(d))
-		error_handling2(d, "Error: A certain texture is not valid!\n"); */
+	if (!check_access(d))
+		error_textures(d, "Error: A certain texture is not valid!\n");
 }
 int	check_access(t_data *d)
 {
