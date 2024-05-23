@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bruno <bruno@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:01:38 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/22 17:20:10 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/23 11:08:47 by bruno            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ void	ft_free_data2(t_data *d)
 		ft_free_str_array(&d->map_utils->f_color);
 	if (d->map_utils->map)
 		ft_free_str_array(&d->map_utils->map);
-	/* if (d->map_utils->map_dup)
-		ft_free_str_array(&d->map_utils->map_dup); */
-	/* if (d->map_utils->color_aux)
-		ft_free_str_array(&d->map_utils->color_aux); */
+	if (d->map_utils->map_dup)
+		ft_free_str_array(&d->map_utils->map_dup);
+	if (d->map_utils->color_aux)
+		ft_free_str_array(&d->map_utils->color_aux);
 	if (d->map_utils->ea)
 		free(d->map_utils->ea);
 	if (d->map_utils->no)
@@ -82,19 +82,6 @@ void	ft_free_data3(t_data *d)
 	free(d->e_img);
 	mlx_destroy_image(d->mlx_ptr, d->img->img);
 	free(d->img);
-}
-
-void	ft_no_leak(t_data *d, char *line)
-{
-	while (1)
-	{
-		line = get_next_line(d->fd);
-		if (!line)
-			break ;
-		check_direc(d, line);
-		free(line);
-	}
-	close(d->fd);
 }
 
 void	ft_no_leak2(t_data *d, char *line)

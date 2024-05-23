@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   check_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bruno <bruno@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:57:34 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/22 15:38:13 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/23 11:08:55 by bruno            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
+
+void	ft_no_leak(t_data *d, char *line)
+{
+	while (1)
+	{
+		line = get_next_line(d->fd);
+		if (!line)
+			break ;
+		check_direc(d, line);
+		free(line);
+	}
+	close(d->fd);
+}
 
 void	six_args(t_data *d, char *file_name)
 {

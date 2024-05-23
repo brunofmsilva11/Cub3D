@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test4.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bruno <bruno@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 20:37:33 by bruno             #+#    #+#             */
-/*   Updated: 2024/05/22 18:18:09 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/23 12:33:08 by bruno            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ void	read_map_lines(t_data *d, int *lines_read)
 		line = get_next_line(d->fd);
 		if (!line)
 			break ;
-		if (count == 0)
-			read_map_lines2(d, line);
+		read_map_lines2(d, line);
 		if (d->line_length < (int)ft_strlen(line))
 			d->line_length = ft_strlen(line) - 1;
 		if (ft_strcmp(line, "\n"))
@@ -34,8 +33,6 @@ void	read_map_lines(t_data *d, int *lines_read)
 			(*lines_read)++;
 			count++;
 		}
-		/* else if (!ft_strcmp(line, "\n") && count > 0)
-			error_dup_elem(d, line, 12); */
 		free(line);
 	}
 }
@@ -45,15 +42,6 @@ void	read_map_lines2(t_data *d, char *line)
 	int	i;
 
 	i = 0;
-	while (line[i] && line[i] != '\n')
-	{
-		if (line[i] == ' ')
-			i++;
-		else
-			break ;
-		if (line[i] == '\n')
-			error_dup_elem(d, line, 13);
-	}
 	while (line[i] && line[i] != '\n')
 	{
 		if (check_value(line[i]))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bruno <bruno@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 11:18:15 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/22 16:24:02 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/23 12:32:27 by bruno            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int	is_map_closed(t_data *d)
 		return (0);
 	while (d->map_utils->map[i][j])
 	{
-		if (!check_value2(d, i, j))
+		if (check_value2(d, i, j) != 1)
 			return (d->error);
 		if (d->map_utils->map[i][j] == ' ' || d->map_utils->map[i][j] == '\n')
 			if (check_coord(d, i, j, '0') == 0)
-				return (0);
+				return (16);
 		if (d->map_utils->map[i][j] == '\n')
 		{
 			j = 0;
@@ -96,13 +96,7 @@ void	map_validation_test(t_data *d, char *file_name)
 	skip_lines(d, i);
 	read_map_lines(d, &lines_read);
 	populate_map(d, lines_read, file_name);
-	if (is_map_closed(d) == 1)
-		printf("Mapa FECHADO!\n");
-	else
-	{
-		printf("Mapa invalido!\n");
-		d->error = 0;
-	}
+	d->error = is_map_closed(d);
 	d->map_utils->map[lines_read] = NULL;
 	close(d->fd);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bruno <bruno@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:46:36 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/22 11:57:29 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/23 12:33:30 by bruno            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,7 @@ int	main(int ac, char **av)
 		ft_start(data);
 		ft_free_data(data);
 	}
-	else if (data->error == 2)
-		error_dup_elem(data, NULL, 14);
-	else if (data->error == 3)
-		error_dup_elem(data, NULL, 15);
 	else
-		error_dup_elem(data, NULL, 10);
+		error_dup_elem(data, NULL, data->error);
 	return (0);
 }
