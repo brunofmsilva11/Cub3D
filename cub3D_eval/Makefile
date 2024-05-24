@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bruno <bruno@student.42.fr>                +#+  +:+       +#+         #
+#    By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/09 11:46:40 by bmota-si          #+#    #+#              #
-#    Updated: 2024/05/23 12:02:07 by bruno            ###   ########.fr        #
+#    Updated: 2024/05/24 16:13:13 by bmota-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3D
+NAME = cub3d
 
 CC = cc -g
 CFLAGS = -Wall -Wextra -Werror

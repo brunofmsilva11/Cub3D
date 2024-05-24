@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test4.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruno <bruno@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 20:37:33 by bruno             #+#    #+#             */
-/*   Updated: 2024/05/23 12:33:08 by bruno            ###   ########.fr       */
+/*   Updated: 2024/05/24 18:30:21 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	read_map_lines(t_data *d, int *lines_read)
 			d->line_length = ft_strlen(line) - 1;
 		if (ft_strcmp(line, "\n"))
 		{
-			printf("%s", line);
+			//printf("%s", line);
 			(*lines_read)++;
 			count++;
 		}
@@ -71,11 +71,16 @@ void	process_map_line(t_data *d, char *line)
 			if (j < d->line_length)
 				j = put_spaces(d, i, j);
 		}
-		d->map_utils->map[i][j] = '\n';
-		d->map_utils->map[i][j + 1] = '\0';
+		if (i < d->line_height - 1)
+		{
+			d->map_utils->map[i][j] = '\n';
+			d->map_utils->map[i][j + 1] = '\0';	
+		}
+		else
+			d->map_utils->map[i][j] = '\0';
 	}
 	else
-		error_dup_elem(d, line, 14);
+		error_first_elem(d, line);
 }
 
 int	put_spaces(t_data *d, int i, int j)

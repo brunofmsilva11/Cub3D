@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 20:34:23 by bruno             #+#    #+#             */
-/*   Updated: 2024/05/22 17:25:56 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/24 14:53:32 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int	check_char(char *str)
 {
-	if (str[0] == '1' || str[0] == ' ')
+	if (str[0] == '1' || str[0] == ' ' || str[0] == '0' ||
+			str[0] == 'N' || str[0] == 'S' ||
+				str[0] == 'W' || str[0] == 'E')
 		return (1);
 	return (0);
 }
@@ -61,6 +63,8 @@ int	check_coord(t_data *d, int i, int j, char a)
 
 int	check_value2(t_data *d, int i, int j)
 {
+	if (j == 0 && d->map_utils->map[i][j] == '0')
+		return (d->error += 15);
 	if (d->map_utils->map[i][j] != '1' && d->map_utils->map[i][j] != '0' &&
 			d->map_utils->map[i][j] != ' ' && d->map_utils->map[i][j] != '\n')
 		if (d->map_utils->map[i][j] != 'N' && d->map_utils->map[i][j] != 'W' &&
@@ -78,8 +82,8 @@ int	check_value2(t_data *d, int i, int j)
 		d->map_utils->skip_count++;
 		if (d->map_utils->skip_count > 1)
 			return (d->error -= 1);
-		if (!check_coord(d, i, j, ' '))
-			return (d->error -= 1);
+		if (!check_coord(d, i, j, ' ') || j == 0)
+			return (d->error += 15);
 	}
 	return (1);
 }

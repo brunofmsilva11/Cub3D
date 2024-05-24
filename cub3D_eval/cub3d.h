@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:47:06 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/22 17:23:48 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/24 15:31:54 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ void			error_in_elem(t_data *d, char *line);
 void			error_dup_elem(t_data *d, char *line, int n);
 void			no_tab_error_handle(t_data *d);
 void			error_textures(t_data *d, char *str);
+void			error_first_elem(t_data *d, char *line);
 
 /************************************************************************/
 
@@ -157,6 +158,8 @@ void			ft_free_data6(t_data *d);
 
 //free3.c
 void			ft_free_data7(t_data *d);
+void			ft_free_data8(t_data *d);
+void			ft_free_str_array2(char **arr);
 
 /************************************************************************/
 
@@ -185,6 +188,7 @@ void			ft_check_map_file(t_data *d, char *file_name);
 //check_textures.c
 void			ft_check_textures(t_data *d);
 void			ft_check_textures2(t_data *d);
+int				ft_check_textures3(t_data *d, char *str);
 
 //direc_color.c
 int				check_direc(t_data *d, char *line);

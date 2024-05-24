@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruno <bruno@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 11:18:15 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/23 12:32:27 by bruno            ###   ########.fr       */
+/*   Updated: 2024/05/24 15:11:19 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	is_map_closed(t_data *d)
 	i = 0;
 	j = 0;
 	d->map_utils->skip_count = 0;
-	if (!check_first_last(d))
-		return (0);
+	if (check_first_last(d) != 1)
+		return (d->error);
 	while (d->map_utils->map[i][j])
 	{
 		if (check_value2(d, i, j) != 1)

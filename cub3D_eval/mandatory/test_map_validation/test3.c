@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 20:35:56 by bruno             #+#    #+#             */
-/*   Updated: 2024/05/22 13:30:12 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/24 15:09:05 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,14 @@ int	check_first_last(t_data *d)
 	int	j;
 
 	j = 0;
+	if (d->map_utils->map[0][0] == 0)
+		return (d->error += 3);
 	while (d->map_utils->map[0][j] && d->map_utils->map[0][j] != '\n')
 	{
 		if (d->map_utils->map[0][j] == '1' || d->map_utils->map[0][j] == ' ')
 			j++;
 		else
-			return (0);
+			return (d->error += 15);
 	}
 	j = 0;
 	d->line_height -= 1;
@@ -64,7 +66,7 @@ int	check_first_last(t_data *d)
 			d->map_utils->map[d->line_height][j] == ' ')
 			j++;
 		else
-			return (0);
+			return (d->error += 15);
 	}
 	return (1);
 }
