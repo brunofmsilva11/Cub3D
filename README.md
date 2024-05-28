@@ -21,4 +21,4 @@
 
 ## How to play
 
-
+[Screencast from 28-05-2024 19:35:07.webm](https://github.com/brunofmsilva11/Cub3D/assets/117391049/dfc3ef8a-3f88-40ba-9493-01f1910ea4a1)
