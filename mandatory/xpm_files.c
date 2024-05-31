@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 14:31:30 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/22 13:34:55 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/31 13:14:42 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,16 @@ void	get_imgs_addr(t_data *d)
 			&d->w_img->line_length, &d->w_img->endian);
 	d->e_img->addr = mlx_get_data_addr(d->e_img->img, &d->e_img->bpp,
 			&d->e_img->line_length, &d->e_img->endian);
+}
+
+void	check_imgs_xpm(t_data *d)
+{
+	if (d->n_img->line_length != 256
+		||d->s_img->line_length != 256
+		|| d->w_img->line_length != 256
+		|| d->e_img->line_length != 256)
+	{
+		ft_free_data(d);
+		finish_error("Error\nInvalid size image!\n", 2);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 16:21:10 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/22 13:19:54 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/31 13:21:26 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void	ft_start(t_data *d)
 	init_struct_imgs(d);
 	ft_init_stack3(d);
 	get_imgs_xpm(d);
+	check_imgs_xpm(d);
 	d->win_ptr = mlx_new_window(d->mlx_ptr, WIDTH, HEIGHT, "CUB3D");
 	direction(d);
 	draw_raycast(d);

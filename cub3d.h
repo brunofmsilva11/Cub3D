@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:47:06 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/31 11:30:12 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/31 13:13:41 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,6 +295,7 @@ int				ft_count_lines(t_data *d);
 /* - - - - - -[xpm_files.c] - - - - - -*/
 void			get_imgs_xpm(t_data *d);
 void			get_imgs_addr(t_data *d);
+void			check_imgs_xpm(t_data *d);
 
 /* - - - - - -[main.c] - - - - - -*/
 void			ft_start(t_data *d);
