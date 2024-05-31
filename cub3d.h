@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:47:06 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/31 10:55:05 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/31 11:30:12 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,21 +99,15 @@ typedef struct s_data
 	int		draw_end;
 	int		mapx;
 	int		mapy;
-	int		wall_dir;
-	int		x;
-	int		y;
 	int		fd;
 	int		temp_fd;
 	int		i;
-	int		a;
-	int		b;
 	int		key_press_up;
 	int		key_press_down;
 	int		key_press_left;
 	int		key_press_right;
 	int		key_press_r_right;
 	int		key_press_r_left;
-	int		tab_count;
 	double	wall_x;
 	int		tex_x;
 	int		tex_y;
