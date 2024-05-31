@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:47:06 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/24 15:31:54 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/31 10:55:05 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -263,6 +263,7 @@ int				check_first_last(t_data *d);
 void			read_map_lines(t_data *d, int *lines_read);
 void			read_map_lines2(t_data *d, char *line);
 void			process_map_line(t_data *d, char *line);
+void			check_last_line(t_data *d, int i, int j);
 int				put_spaces(t_data *d, int i, int j);
 
 /************************************************************************/

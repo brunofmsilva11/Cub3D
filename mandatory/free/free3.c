@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 17:22:47 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/24 13:48:13 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/31 10:45:23 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ void	ft_free_str_array2(char **arr)
 	int	i;
 
 	i = 0;
-	if (arr)  // Verifique se arr não é NULL
+	if (arr)
 	{
 		while (arr[i])
 		{
 			free(arr[i]);
-			arr[i] = NULL;  // Defina o ponteiro para NULL após liberar a memória
+			arr[i] = NULL;
 			i++;
 		}
 		free(arr);

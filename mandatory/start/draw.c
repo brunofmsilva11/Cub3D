@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 17:18:27 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/22 13:18:16 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/05/31 11:24:00 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,6 @@ void	get_wall_x(t_data *d)
 	}
 }
 
-/*a função ft_get_pixel é responsável por obter a cor do 
-pixel na textura, dados os índices x e y. Ela acessa 
-diretamente a matriz de pixels da textura usando a 
-informação de endereço (addr), comprimento da linha 
-(line_length), e bytes por pixel (bpp).*/
 int	ft_get_pixel(t_data *d, int x, int y)
 {
 	return (*(unsigned int *)((d->aux->addr
