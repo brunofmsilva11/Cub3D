@@ -6,7 +6,7 @@
 #    By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/09 11:46:40 by bmota-si          #+#    #+#              #
-#    Updated: 2024/05/24 16:13:13 by bmota-si         ###   ########.fr        #
+#    Updated: 2024/06/05 16:37:56 by bmota-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,19 +48,19 @@ $(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MINILIBX) $(MFLAGS) -o $(NAME) -lm
 
 game:
-		./cub3D maps/map.cub
+		./cub3d maps/map.cub
 
 leaks:
-		valgrind --leak-check=full --show-leak-kinds=all ./cub3D maps/map.cub
+		valgrind --leak-check=full --show-leak-kinds=all ./cub3d maps/map.cub
 
 leaks2:
-		valgrind --leak-check=full --show-leak-kinds=all ./cub3D maps/teste.cub
+		valgrind --leak-check=full --show-leak-kinds=all ./cub3d maps/teste.cub
 
 gdb:
-		gdb --tui --args ./cub3D maps/map.cub
+		gdb --tui --args ./cub3d maps/map.cub
 
 gdb2:
-		gdb --tui --args ./cub3D maps/teste.cub
+		gdb --tui --args ./cub3d maps/teste.cub
 
 clean:
 	@$(MAKE) clean -C ./libft

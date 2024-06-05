@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 16:21:10 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/31 15:24:14 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/06/05 16:37:56 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	ft_start(t_data *d)
 	ft_init_stack3(d);
 	get_imgs_xpm(d);
 	check_imgs_xpm(d);
-	d->win_ptr = mlx_new_window(d->mlx_ptr, WIDTH, HEIGHT, "CUB3D");
+	d->win_ptr = mlx_new_window(d->mlx_ptr, WIDTH, HEIGHT, "cub3d");
 	direction(d);
 	draw_raycast(d);
 	mlx_hook(d->win_ptr, KeyPress, KeyPressMask, handle_input, d);

@@ -6,12 +6,12 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:47:06 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/05/31 13:13:41 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/06/05 16:37:56 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef cub3d_H
+# define cub3d_H
 
 # include "libft/libft.h"
 # include "minilibx-linux/mlx.h"
@@ -252,6 +252,7 @@ int				check_value(char a);
 int				check_player_position(t_data *d, int i, int j, char a);
 void			put_player_pos(t_data *d, int y, int x);
 int				check_first_last(t_data *d);
+int				check_value3(t_data *d, int i, int j);
 
 //test4.c
 void			read_map_lines(t_data *d, int *lines_read);

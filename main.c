@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:46:36 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/06/03 16:30:01 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/06/05 16:37:56 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 	{
-		ft_putstr_fd("Error\nCheck the input-->./cub3D <Map path>\n", 2);
+		ft_putstr_fd("Error\nCheck the input-->./cub3d <Map path>\n", 2);
 		return (0);
 	}
 	data = malloc(sizeof(t_data));

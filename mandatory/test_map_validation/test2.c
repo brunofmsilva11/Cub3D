@@ -6,7 +6,7 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 20:34:23 by bruno             #+#    #+#             */
-/*   Updated: 2024/05/31 10:50:08 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/06/05 16:37:56 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,17 @@ int	check_coord(t_data *d, int i, int j, char a)
 
 int	check_value2(t_data *d, int i, int j)
 {
-	if (j == 0 && d->map_utils->map[i][j] == '0')
-		return (d->error += 15);
+	if (check_value3(d, i, j) != 1)
+		return (d->error);
 	if (d->map_utils->map[i][j] != '1' && d->map_utils->map[i][j] != '0' &&
 			d->map_utils->map[i][j] != ' ' && d->map_utils->map[i][j] != '\n')
 		if (d->map_utils->map[i][j] != 'N' && d->map_utils->map[i][j] != 'W' &&
 				d->map_utils->map[i][j] != 'E' &&
 					d->map_utils->map[i][j] != 'S')
 			return (d->error += 1);
-	if (d->map_utils->map[i][j] == 'N' || d->map_utils->map[i][j] == 'W' ||
+	if ((d->map_utils->map[i][j] == 'N' || d->map_utils->map[i][j] == 'W' ||
 				d->map_utils->map[i][j] == 'E' ||
-					d->map_utils->map[i][j] == 'S')
+					d->map_utils->map[i][j] == 'S'))
 	{
 		d->map_utils->player_pos = d->map_utils->map[i][j];
 		if (!check_player_position(d, i, j, '0'))

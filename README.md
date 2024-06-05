@@ -1,6 +1,6 @@
-# Cub3D
+# cub3d
 
-**Cub3D** is a project developed at 42. The goal of this project is to create a 3D game using the Raycasting technique, similar to the classic game Wolfenstein 3D. This project teaches fundamental concepts of computer graphics, game development, and algorithms in C.
+**cub3d** is a project developed at 42. The goal of this project is to create a 3D game using the Raycasting technique, similar to the classic game Wolfenstein 3D. This project teaches fundamental concepts of computer graphics, game development, and algorithms in C.
 
 ## Project Objectives
 
@@ -21,4 +21,4 @@
 
 ## How to play
 
-[Screencast from 28-05-2024 19:35:07.webm](https://github.com/brunofmsilva11/Cub3D/assets/117391049/dfc3ef8a-3f88-40ba-9493-01f1910ea4a1)
+[Screencast from 28-05-2024 19:35:07.webm](https://github.com/brunofmsilva11/cub3d/assets/117391049/dfc3ef8a-3f88-40ba-9493-01f1910ea4a1)
