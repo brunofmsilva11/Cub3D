@@ -6,11 +6,11 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:15:09 by bruno             #+#    #+#             */
-/*   Updated: 2024/06/05 16:37:56 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/06/05 14:37:43 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../cub3D.h"
 
 void	get_texture_val(t_data *d)
 {

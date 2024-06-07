@@ -6,11 +6,11 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:57:34 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/06/05 16:37:56 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/06/05 14:37:43 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../cub3D.h"
 
 void	ft_no_leak(t_data *d, char *line)
 {
@@ -19,7 +19,6 @@ void	ft_no_leak(t_data *d, char *line)
 		line = get_next_line(d->fd);
 		if (!line)
 			break ;
-		//check_direc(d, line);
 		free(line);
 	}
 	close(d->fd);
@@ -37,15 +36,9 @@ void	six_args(t_data *d, char *file_name)
 		if (!line)
 			error_dup_elem(d, line, 1);
 		if (ft_strchr(" 1", line[0]))
-		{
-			//free(line);
 			error_dup_elem(d, line, 1);
-		}
 		if (!check_direc(d, line) && line[0] != '\n')
-		{
-			//free(line);
 			error_dup_elem(d, line, 1);
-		}
 		free(line);
 		d->map_utils->skip_count++;
 	}

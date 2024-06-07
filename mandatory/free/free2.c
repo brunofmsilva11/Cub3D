@@ -6,11 +6,11 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 15:21:13 by bruno             #+#    #+#             */
-/*   Updated: 2024/06/05 16:37:56 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/06/05 14:37:43 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../cub3D.h"
 
 int	ft_no_leak3(t_data *d, char *line)
 {

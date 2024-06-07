@@ -6,11 +6,11 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:33:57 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/06/05 16:37:56 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/06/05 14:37:43 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../cub3D.h"
 
 void	ft_check_textures(t_data *d)
 {

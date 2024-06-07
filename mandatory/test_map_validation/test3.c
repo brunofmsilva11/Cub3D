@@ -6,11 +6,11 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 20:35:56 by bruno             #+#    #+#             */
-/*   Updated: 2024/06/05 16:37:56 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/06/05 16:35:39 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../cub3D.h"
 
 int	check_value(char a)
 {

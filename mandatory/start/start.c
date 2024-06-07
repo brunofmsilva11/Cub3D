@@ -6,11 +6,11 @@
 /*   By: bmota-si <bmota-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 16:21:10 by bmota-si          #+#    #+#             */
-/*   Updated: 2024/06/05 16:37:56 by bmota-si         ###   ########.fr       */
+/*   Updated: 2024/06/05 14:37:43 by bmota-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../cub3D.h"
 
 void	get_hit(t_data *d)
 {
@@ -101,7 +101,7 @@ void	ft_start(t_data *d)
 	ft_init_stack3(d);
 	get_imgs_xpm(d);
 	check_imgs_xpm(d);
-	d->win_ptr = mlx_new_window(d->mlx_ptr, WIDTH, HEIGHT, "cub3d");
+	d->win_ptr = mlx_new_window(d->mlx_ptr, WIDTH, HEIGHT, "CUB3D");
 	direction(d);
 	draw_raycast(d);
 	mlx_hook(d->win_ptr, KeyPress, KeyPressMask, handle_input, d);
